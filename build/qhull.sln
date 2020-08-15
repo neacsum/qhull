@@ -1,78 +1,40 @@
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libqhull", "libqhull.vcproj", "{51BD63AB-336E-4215-B725-21F144BCBCBC}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30406.217
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libqhull", "libqhull.vcxproj", "{51BD63AB-336E-4215-B725-21F144BCBCBC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qconvex", "qconvex.vcproj", "{F909F400-6805-477F-B85B-5230DED4CB55}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5B24F2E7-EF6E-4AF6-B2CE-1E049B1A12AC} = {5B24F2E7-EF6E-4AF6-B2CE-1E049B1A12AC}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qconvex", "qconvex.vcxproj", "{F909F400-6805-477F-B85B-5230DED4CB55}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qdelaunay", "qdelaunay.vcproj", "{10EB0D60-E1A6-41FC-BD86-A4BC5814B535}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5B24F2E7-EF6E-4AF6-B2CE-1E049B1A12AC} = {5B24F2E7-EF6E-4AF6-B2CE-1E049B1A12AC}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qdelaunay", "qdelaunay.vcxproj", "{10EB0D60-E1A6-41FC-BD86-A4BC5814B535}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qhalf", "qhalf.vcproj", "{4C67E982-8B07-43B8-836E-EB7495176740}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5B24F2E7-EF6E-4AF6-B2CE-1E049B1A12AC} = {5B24F2E7-EF6E-4AF6-B2CE-1E049B1A12AC}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qhalf", "qhalf.vcxproj", "{4C67E982-8B07-43B8-836E-EB7495176740}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qhull", "qhull.vcproj", "{6D8411B9-813D-4DE4-84B5-56C0BC381A14}"
-	ProjectSection(ProjectDependencies) = postProject
-		{635EC42D-5C25-4D20-B5C2-D0A0034EB9B8} = {635EC42D-5C25-4D20-B5C2-D0A0034EB9B8}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qhull", "qhull.vcxproj", "{6D8411B9-813D-4DE4-84B5-56C0BC381A14}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qhull_p", "qhull_p.vcproj", "{9A9C8B7B-2D5A-428E-A5D6-303FAF68AB19}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qhull_p", "qhull_p.vcxproj", "{9A9C8B7B-2D5A-428E-A5D6-303FAF68AB19}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qhull_r", "qhull_r.vcproj", "{DA9B53C4-2817-4E37-9181-E61959CBB0FE}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qhull_r", "qhull_r.vcxproj", "{DA9B53C4-2817-4E37-9181-E61959CBB0FE}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qhullcpp", "qhullcpp.vcproj", "{7326816B-C401-4ACA-8027-03BA7A98C16B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qhullcpp", "qhullcpp.vcxproj", "{7326816B-C401-4ACA-8027-03BA7A98C16B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qhullstatic", "qhullstatic.vcproj", "{5B24F2E7-EF6E-4AF6-B2CE-1E049B1A12AC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qhullstatic", "qhullstatic.vcxproj", "{5B24F2E7-EF6E-4AF6-B2CE-1E049B1A12AC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qhullstatic_r", "qhullstatic_r.vcproj", "{635EC42D-5C25-4D20-B5C2-D0A0034EB9B8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qhullstatic_r", "qhullstatic_r.vcxproj", "{635EC42D-5C25-4D20-B5C2-D0A0034EB9B8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qvoronoi", "qvoronoi.vcproj", "{0807C09D-455C-417A-A979-2081F170C923}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5B24F2E7-EF6E-4AF6-B2CE-1E049B1A12AC} = {5B24F2E7-EF6E-4AF6-B2CE-1E049B1A12AC}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qvoronoi", "qvoronoi.vcxproj", "{0807C09D-455C-417A-A979-2081F170C923}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rbox", "rbox.vcproj", "{1B7A1D90-AEDB-42A4-A1BD-B0C5CD430BF2}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5B24F2E7-EF6E-4AF6-B2CE-1E049B1A12AC} = {5B24F2E7-EF6E-4AF6-B2CE-1E049B1A12AC}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rbox", "rbox.vcxproj", "{1B7A1D90-AEDB-42A4-A1BD-B0C5CD430BF2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testqset", "testqset.vcproj", "{2D714931-0586-42C5-A0F9-1A4ECD251890}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5B24F2E7-EF6E-4AF6-B2CE-1E049B1A12AC} = {5B24F2E7-EF6E-4AF6-B2CE-1E049B1A12AC}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testqset", "testqset.vcxproj", "{2D714931-0586-42C5-A0F9-1A4ECD251890}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testqset_r", "testqset_r.vcproj", "{8C831027-7179-451A-9C7C-805381706037}"
-	ProjectSection(ProjectDependencies) = postProject
-		{635EC42D-5C25-4D20-B5C2-D0A0034EB9B8} = {635EC42D-5C25-4D20-B5C2-D0A0034EB9B8}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testqset_r", "testqset_r.vcxproj", "{8C831027-7179-451A-9C7C-805381706037}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "user_eg", "user_eg.vcproj", "{6FE77AAD-0F23-416B-ABAC-C8A0A24F1441}"
-	ProjectSection(ProjectDependencies) = postProject
-		{DA9B53C4-2817-4E37-9181-E61959CBB0FE} = {DA9B53C4-2817-4E37-9181-E61959CBB0FE}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "user_eg", "user_eg.vcxproj", "{6FE77AAD-0F23-416B-ABAC-C8A0A24F1441}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "user_eg2", "user_eg2.vcproj", "{782D2A68-F0EC-4D0E-B443-017E02FB53E8}"
-	ProjectSection(ProjectDependencies) = postProject
-		{635EC42D-5C25-4D20-B5C2-D0A0034EB9B8} = {635EC42D-5C25-4D20-B5C2-D0A0034EB9B8}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "user_eg2", "user_eg2.vcxproj", "{782D2A68-F0EC-4D0E-B443-017E02FB53E8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "user_eg3", "user_eg3.vcproj", "{83203305-79D5-412C-9819-0F9AD5C34EC1}"
-	ProjectSection(ProjectDependencies) = postProject
-		{7326816B-C401-4ACA-8027-03BA7A98C16B} = {7326816B-C401-4ACA-8027-03BA7A98C16B}
-		{635EC42D-5C25-4D20-B5C2-D0A0034EB9B8} = {635EC42D-5C25-4D20-B5C2-D0A0034EB9B8}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qhulltest", "qhulltest\qhulltest.vcproj", "{E12E04D0-C11C-36C0-950E-A203DCBFB37C}"
-	ProjectSection(ProjectDependencies) = postProject
-		{635EC42D-5C25-4D20-B5C2-D0A0034EB9B8} = {635EC42D-5C25-4D20-B5C2-D0A0034EB9B8}
-		{7326816B-C401-4ACA-8027-03BA7A98C16B} = {7326816B-C401-4ACA-8027-03BA7A98C16B}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "user_eg3", "user_eg3.vcxproj", "{83203305-79D5-412C-9819-0F9AD5C34EC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -218,16 +180,11 @@ Global
 		{83203305-79D5-412C-9819-0F9AD5C34EC1}.Release|Win32.Build.0 = Release|Win32
 		{83203305-79D5-412C-9819-0F9AD5C34EC1}.RelWithDebInfo|Win32.ActiveCfg = RelWithDebInfo|Win32
 		{83203305-79D5-412C-9819-0F9AD5C34EC1}.RelWithDebInfo|Win32.Build.0 = RelWithDebInfo|Win32
-		{E12E04D0-C11C-36C0-950E-A203DCBFB37C}.Debug|Win32.ActiveCfg = Debug|Win32
-		{E12E04D0-C11C-36C0-950E-A203DCBFB37C}.Debug|Win32.Build.0 = Debug|Win32
-		{E12E04D0-C11C-36C0-950E-A203DCBFB37C}.MinSizeRel|Win32.ActiveCfg = Release|Win32
-		{E12E04D0-C11C-36C0-950E-A203DCBFB37C}.MinSizeRel|Win32.Build.0 = Release|Win32
-		{E12E04D0-C11C-36C0-950E-A203DCBFB37C}.Release|Win32.ActiveCfg = Release|Win32
-		{E12E04D0-C11C-36C0-950E-A203DCBFB37C}.Release|Win32.Build.0 = Release|Win32
-		{E12E04D0-C11C-36C0-950E-A203DCBFB37C}.RelWithDebInfo|Win32.ActiveCfg = Release|Win32
-		{E12E04D0-C11C-36C0-950E-A203DCBFB37C}.RelWithDebInfo|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF367088-0842-44AF-8658-A48190ADAFDB}
 	EndGlobalSection
 EndGlobal

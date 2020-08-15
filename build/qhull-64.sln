@@ -1,5 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30406.217
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libqhull", "libqhull-64.vcxproj", "{AE297F0D-5402-41C0-83B1-0194B583B67E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qconvex", "qconvex-64.vcxproj", "{14FC642B-13AD-43EE-98A1-A15D9373B9BA}"
@@ -57,12 +59,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "user_eg2", "user_eg2-64.vcx
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "user_eg3", "user_eg3-64.vcxproj", "{E615D779-7F0A-4521-B7AD-B3C0D328652E}"
-	ProjectSection(ProjectDependencies) = postProject
-		{939F1F43-F252-486C-BB92-3166E44713A5} = {939F1F43-F252-486C-BB92-3166E44713A5}
-		{526F05C7-E54E-4673-91DC-A3AF75041688} = {526F05C7-E54E-4673-91DC-A3AF75041688}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qhulltest-64", "qhulltest\qhulltest-64.vcxproj", "{59F000B6-1AEC-3107-979D-510DA098577A}"
 	ProjectSection(ProjectDependencies) = postProject
 		{939F1F43-F252-486C-BB92-3166E44713A5} = {939F1F43-F252-486C-BB92-3166E44713A5}
 		{526F05C7-E54E-4673-91DC-A3AF75041688} = {526F05C7-E54E-4673-91DC-A3AF75041688}
@@ -212,12 +208,11 @@ Global
 		{E615D779-7F0A-4521-B7AD-B3C0D328652E}.Release|x64.Build.0 = Release|x64
 		{E615D779-7F0A-4521-B7AD-B3C0D328652E}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
 		{E615D779-7F0A-4521-B7AD-B3C0D328652E}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
-		{59F000B6-1AEC-3107-979D-510DA098577A}.Debug|x64.ActiveCfg = Debug|x64
-		{59F000B6-1AEC-3107-979D-510DA098577A}.MinSizeRel|x64.ActiveCfg = Release|x64
-		{59F000B6-1AEC-3107-979D-510DA098577A}.Release|x64.ActiveCfg = Release|x64
-		{59F000B6-1AEC-3107-979D-510DA098577A}.RelWithDebInfo|x64.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E94EF5BD-5E96-4F23-8B2D-FA0179003B14}
 	EndGlobalSection
 EndGlobal
