@@ -97,7 +97,7 @@ int qh_rboxpoints(FILE* fout, FILE* ferr, char* rbox_command) {
     qh_fprintf_stderr(6188, "rbox error: rbox in use by another process.  Please lock calls to rbox or use libqhull_r/rboxlib_r.c\n");
     return qh_ERRqhull;
   }
-  rbox_inuse= True;
+  rbox_inuse= true;
   rbox.ferr= ferr;
   rbox.fout= fout;
   
@@ -107,14 +107,14 @@ int qh_rboxpoints(FILE* fout, FILE* ferr, char* rbox_command) {
     /* same code for error exit and normal return.  qh.NOerrexit is set */
     if (simplex)
       qh_free(simplex);
-    rbox_inuse= False;
+    rbox_inuse= false;
     return exitcode;
   }
   qh_rboxpoints2(rbox_command, &simplex);
   /* same code for error exit and normal return */
   if (simplex)
     qh_free(simplex);
-  rbox_inuse= False;
+  rbox_inuse= false;
   return qh_ERRnone;
 } /* rboxpoints */
 

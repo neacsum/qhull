@@ -52,7 +52,7 @@ QhullQh()
     qh_meminit(this, NULL);
     qh_initstatistics(this);
     qh_initqhull_start2(this, NULL, NULL, qh_FILEstderr);  // Initialize qhT
-    this->ISqhullQh= True;
+    this->ISqhullQh= true;
 }//QhullQh
 
 QhullQh::

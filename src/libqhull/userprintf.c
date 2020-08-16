@@ -75,7 +75,7 @@ void qh_fprintf(FILE *fp, int msgcode, const char *fmt, ... ) {
     /* Place debugging traps here. Use with trace option 'Tn' 
        Set qh.tracefacet_id, qh.traceridge_id, and/or qh.tracevertex_id in global.c
     */
-    if (False) { /* in production skip test for debugging traps */
+    if (false) { /* in production skip test for debugging traps */
       if (qh tracefacet && qh tracefacet->tested) {
         if (qh_setsize(qh tracefacet->neighbors) < qh hull_dim)
           qh_errexit(qh_ERRdebug, qh tracefacet, qh traceridge);

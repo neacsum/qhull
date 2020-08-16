@@ -137,7 +137,7 @@ void    qh_errexit(qhT *qh, int exitcode, facetT *f, ridgeT *r)
 void    qh_fprintf(qhT *qh, FILE *fp, int msgcode, const char *fmt, ... );
 void    qh_fprintf(qhT *qh, FILE *fp, int msgcode, const char *fmt, ... )
 {
-    static int needs_cr= 0;  /* True if qh_fprintf needs a CR. testqset_r is not itself reentrant */
+    static int needs_cr= 0;  /* true if qh_fprintf needs a CR. testqset_r is not itself reentrant */
 
     size_t fmtlen= strlen(fmt);
     va_list args;

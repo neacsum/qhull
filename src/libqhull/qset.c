@@ -893,17 +893,17 @@ void qh_setlarger(setT **oldsetp) {
 
   qh_setlarger_quick( setsize, newsize )
     determine newsize for setsize
-    returns True if newsize fits in quick memory
+    returns true if newsize fits in quick memory
 
   design:
     if 2x fits into quick memory
-      return True, 2x
+      return true, 2x
     if x+4 does not fit into quick memory
-      return False, 2x
+      return false, 2x
     if x+x/3 fits into quick memory
-      return True, the last quick set
+      return true, the last quick set
     otherwise
-      return False, 2x
+      return false, 2x
 */
 int qh_setlarger_quick(int setsize, int *newsize) {
     int lastquickset;
@@ -1145,7 +1145,7 @@ void qh_setreplace(setT *set, void *oldelem, void *newelem) {
     errors if set's maxsize is incorrect
     same as SETreturnsize_(set)
     same code for qh_setsize [qset.c] and QhullSetBase::count
-    if first element is NULL, SETempty_() is True but qh_setsize may be greater than 0
+    if first element is NULL, SETempty_() is true but qh_setsize may be greater than 0
 
   design:
     determine actual size of set from maxsize

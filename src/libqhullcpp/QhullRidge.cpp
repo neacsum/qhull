@@ -42,7 +42,7 @@ QhullRidge::QhullRidge(const Qhull &q, ridgeT *r)
 
 #//!\name foreach
 
-//! Return True if nextRidge3d
+//! Return true if nextRidge3d
 //! Simplicial facets may have incomplete ridgeSets
 //! Does not use qh_errexit()
 bool QhullRidge::

@@ -284,7 +284,7 @@ int main(int argc, char *argv[]) {
   int curlong, totlong; /* used !qh_NOmem */
   int exitcode, numpoints, dim;
   coordT *points;
-  boolT ismalloc;
+  bool ismalloc;
 
   QHULL_LIB_CHECK /* Check for compatible library */
 
@@ -312,7 +312,7 @@ int main(int argc, char *argv[]) {
   qh_init_A(stdin, stdout, stderr, argc, argv);  /* sets qh qhull_command */
   exitcode= setjmp(qh errexit); /* simple statement for CRAY J916 */
   if (!exitcode) {
-    qh NOerrexit= False;
+    qh NOerrexit= false;
     qh_checkflags(qh qhull_command, hidden_options);
     qh_initflags(qh qhull_command);
     points= qh_readpoints(&numpoints, &dim, &ismalloc);
@@ -324,7 +324,7 @@ int main(int argc, char *argv[]) {
       qh_check_points();
     exitcode= qh_ERRnone;
   }
-  qh NOerrexit= True;  /* no more setjmp */
+  qh NOerrexit= true;  /* no more setjmp */
 #ifdef qh_NOmem
   qh_freeqhull(qh_ALL);
 #else

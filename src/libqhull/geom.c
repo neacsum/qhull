@@ -17,6 +17,7 @@
 #include <poly.h>
 #include <random.h>
 #include <math.h>
+#include <stdbool.h>
 
 /*-<a                             href="qh-geom.htm#TOC"
   >-------------------------------</a><a name="distplane">-</a>
@@ -135,8 +136,8 @@ void qh_distplane(pointT *point, facetT *facet, realT *dist) {
   when called by qh_partitionvisible():
     indicated by qh_ISnewfacets
     qh.newfacet_list is list of simplicial, new facets
-    qh_findbestnew set if qh_sharpnewfacets returns True (to use qh_findbestnew)
-    qh.bestfacet_notsharp set if qh_sharpnewfacets returns False
+    qh_findbestnew set if qh_sharpnewfacets returns true (to use qh_findbestnew)
+    qh.bestfacet_notsharp set if qh_sharpnewfacets returns false
 
   when called by qh_findfacet(), qh_partitionpoint(), qh_partitioncoplanar(),
                  qh_check_bestdist(), qh_addpoint()
@@ -157,15 +158,15 @@ void qh_distplane(pointT *point, facetT *facet, realT *dist) {
     test horizon facets
 */
 facetT *qh_findbest(pointT *point, facetT *startfacet,
-                     boolT bestoutside, boolT isnewfacets, boolT noupper,
-                     realT *dist, boolT *isoutside, int *numpart) {
+                     bool bestoutside, bool isnewfacets, bool noupper,
+                     realT *dist, bool *isoutside, int *numpart) {
   realT bestdist= -REALmax/2 /* avoid underflow */;
   facetT *facet, *neighbor, **neighborp;
   facetT *bestfacet= NULL, *lastfacet= NULL;
   int oldtrace= qh IStracing;
   unsigned int visitid= ++qh visit_id;
   int numpartnew=0;
-  boolT testhorizon= True; /* needed if precise, e.g., rbox c D6 | qhull Q0 Tv */
+  bool testhorizon= true; /* needed if precise, e.g., rbox c D6 | qhull Q0 Tv */
 
   zinc_(Zfindbest);
 #ifndef qh_NOtrace
@@ -180,7 +181,7 @@ facetT *qh_findbest(pointT *point, facetT *startfacet,
   }
 #endif
   if (isoutside)
-    *isoutside= True;
+    *isoutside= true;
   if (!startfacet->flipped) {  /* test startfacet before testing its neighbors */
     *numpart= 1;
     qh_distplane(point, startfacet, dist);  /* this code is duplicated below */
@@ -233,16 +234,16 @@ facetT *qh_findbest(pointT *point, facetT *startfacet,
     if (!bestfacet) { /* startfacet is upperdelaunay (or flipped) w/o !flipped newfacet neighbors */
       bestdist= -REALmax/2;
       bestfacet= qh_findbestnew(point, qh newfacet_list, &bestdist, bestoutside, isoutside, &numpartnew);
-      testhorizon= False; /* qh_findbestnew calls qh_findbesthorizon */
+      testhorizon= false; /* qh_findbestnew calls qh_findbesthorizon */
     }else if (!qh findbest_notsharp && bestdist < -qh DISTround) {
       if (qh_sharpnewfacets()) {
         /* seldom used, qh_findbestnew will retest all facets */
         zinc_(Zfindnewsharp);
         bestfacet= qh_findbestnew(point, bestfacet, &bestdist, bestoutside, isoutside, &numpartnew);
-        testhorizon= False; /* qh_findbestnew calls qh_findbesthorizon */
-        qh findbestnew= True;
+        testhorizon= false; /* qh_findbestnew calls qh_findbesthorizon */
+        qh findbestnew= true;
       }else
-        qh findbest_notsharp= True;
+        qh findbest_notsharp= true;
     }
   }
   if (!bestfacet)
@@ -251,7 +252,7 @@ facetT *qh_findbest(pointT *point, facetT *startfacet,
     bestfacet= qh_findbesthorizon(!qh_IScheckmax, point, bestfacet, noupper, &bestdist, &numpartnew);
   *dist= bestdist;
   if (isoutside && bestdist < qh MINoutside)
-    *isoutside= False;
+    *isoutside= false;
 LABELreturn_best:
   zadd_(Zfindbesttot, *numpart);
   zmax_(Zfindbestmax, *numpart);
@@ -306,16 +307,16 @@ LABELreturn_best:
       unless upperdelaunay or clearly outside
          update best facet
 */
-facetT *qh_findbesthorizon(boolT ischeckmax, pointT* point, facetT *startfacet, boolT noupper, realT *bestdist, int *numpart) {
+facetT *qh_findbesthorizon(bool ischeckmax, pointT* point, facetT *startfacet, bool noupper, realT *bestdist, int *numpart) {
   facetT *bestfacet= startfacet;
   realT dist;
   facetT *neighbor, **neighborp, *facet;
   facetT *nextfacet= NULL; /* optimize last facet of coplanarfacetset */
   int numpartinit= *numpart, coplanarfacetset_size, numcoplanar= 0, numfacet= 0;
   unsigned int visitid= ++qh visit_id;
-  boolT newbest= False; /* for tracing */
+  bool newbest= false; /* for tracing */
   realT minsearch, searchdist;  /* skip facets that are too far from point */
-  boolT is_5x_minsearch;
+  bool is_5x_minsearch;
 
   if (!ischeckmax) {
     zinc_(Zfindhorizon);
@@ -334,7 +335,7 @@ facetT *qh_findbesthorizon(boolT ischeckmax, pointT* point, facetT *startfacet, 
   coplanarfacetset_size= 0;
   startfacet->visitid= visitid;
   facet= startfacet;
-  while (True) {
+  while (true) {
     numfacet++;
     is_5x_minsearch= (ischeckmax && facet->nummerge > 10 && qh_setsize(facet->neighbors) > 100);  /* QH11033 FIX: qh_findbesthorizon: many tests for facets with many merges and neighbors.  Can hide coplanar facets, e.g., 'rbox 1000 s Z1 G1e-13' with 4400+ neighbors */
     trace4((qh ferr, 4002, "qh_findbesthorizon: test neighbors of f%d bestdist %2.2g f%d ischeckmax? %d noupper? %d minsearch %2.2g is_5x? %d searchdist %2.2g\n",
@@ -358,7 +359,7 @@ facetT *qh_findbesthorizon(boolT ischeckmax, pointT* point, facetT *startfacet, 
             }
             bestfacet= neighbor;
             *bestdist= dist;
-            newbest= True;
+            newbest= true;
           }
         }else if (is_5x_minsearch) {
           if (dist < 5 * minsearch)
@@ -391,7 +392,7 @@ facetT *qh_findbesthorizon(boolT ischeckmax, pointT* point, facetT *startfacet, 
       SETtruncate_(qh coplanarfacetset, 0);
     }else
       facet= (facetT *)qh_setdellast(qh coplanarfacetset);
-  } /* while True, i.e., "for each facet in qh.coplanarfacetset" */
+  } /* while true, i.e., "for each facet in qh.coplanarfacetset" */
   if (!ischeckmax) {
     zadd_(Zfindhorizontot, *numpart - numpartinit);
     zmax_(Zfindhorizonmax, *numpart - numpartinit);
@@ -447,14 +448,14 @@ facetT *qh_findbesthorizon(boolT ischeckmax, pointT* point, facetT *startfacet, 
     test horizon facets
 */
 facetT *qh_findbestnew(pointT *point, facetT *startfacet,
-           realT *dist, boolT bestoutside, boolT *isoutside, int *numpart) {
+           realT *dist, bool bestoutside, bool *isoutside, int *numpart) {
   realT bestdist= -REALmax/2;
   facetT *bestfacet= NULL, *facet;
   int oldtrace= qh IStracing, i;
   unsigned int visitid= ++qh visit_id;
   realT distoutside= 0.0;
-  boolT isdistoutside; /* True if distoutside is defined */
-  boolT testhorizon= True; /* needed if precise, e.g., rbox c D6 | qhull Q0 Tv */
+  bool isdistoutside; /* true if distoutside is defined */
+  bool testhorizon= true; /* needed if precise, e.g., rbox c D6 | qhull Q0 Tv */
 
   if (!startfacet || !startfacet->next) {
     if (qh MERGING) {
@@ -468,13 +469,13 @@ facetT *qh_findbestnew(pointT *point, facetT *startfacet,
   }
   zinc_(Zfindnew);
   if (qh BESToutside || bestoutside)
-    isdistoutside= False;
+    isdistoutside= false;
   else {
-    isdistoutside= True;
+    isdistoutside= true;
     distoutside= qh_DISToutside; /* multiple of qh.MINoutside & qh.max_outside, see user.h */
   }
   if (isoutside)
-    *isoutside= True;
+    *isoutside= true;
   *numpart= 0;
 #ifndef qh_NOtrace
   if (qh IStracing >= 4 || (qh TRACElevel && qh TRACEpoint >= 0 && qh TRACEpoint == qh_pointid(point))) {
@@ -506,12 +507,12 @@ facetT *qh_findbestnew(pointT *point, facetT *startfacet,
       } /* end of !flipped */
     } /* FORALLfacet from startfacet or qh newfacet_list */
   }
-  if (testhorizon || !bestfacet) /* testhorizon is always True.  Keep the same code as qh_findbest */
+  if (testhorizon || !bestfacet) /* testhorizon is always true.  Keep the same code as qh_findbest */
     bestfacet= qh_findbesthorizon(!qh_IScheckmax, point, bestfacet ? bestfacet : startfacet,
                                         !qh_NOupper, &bestdist, numpart);
   *dist= bestdist;
   if (isoutside && *dist < qh MINoutside)
-    *isoutside= False;
+    *isoutside= false;
 LABELreturn_bestnew:
   zadd_(Zfindnewtot, *numpart);
   zmax_(Zfindnewmax, *numpart);
@@ -560,12 +561,12 @@ LABELreturn_bestnew:
         if zero divide and not last row
           set tail of normal to 0
 */
-void qh_backnormal(realT **rows, int numrow, int numcol, boolT sign,
-        coordT *normal, boolT *nearzero) {
+void qh_backnormal(realT **rows, int numrow, int numcol, bool sign,
+        coordT *normal, bool *nearzero) {
   int i, j;
   coordT *normalp, *normal_tail, *ai, *ak;
   realT diagonal;
-  boolT waszero;
+  bool waszero;
   int zerocol= -1;
 
   normalp= normal + numcol - 1;
@@ -580,7 +581,7 @@ void qh_backnormal(realT **rows, int numrow, int numcol, boolT sign,
     if (fabs_(diagonal) > qh MINdenom_2)
       *(normalp--) /= diagonal;
     else {
-      waszero= False;
+      waszero= false;
       *normalp= qh_divzero(*normalp, diagonal, qh MINdenom_1_2, &waszero);
       if (waszero) {
         zerocol= i;
@@ -592,7 +593,7 @@ void qh_backnormal(realT **rows, int numrow, int numcol, boolT sign,
     }
   }
   if (zerocol != -1) {
-    *nearzero= True;
+    *nearzero= true;
     trace4((qh ferr, 4005, "qh_backnormal: zero diagonal at column %d.\n", i));
     zzinc_(Zback0);
     qh_joggle_restart("zero diagonal on back substitution");
@@ -620,12 +621,12 @@ void qh_backnormal(realT **rows, int numrow, int numcol, boolT sign,
       test for near zero
       perform gaussian elimination step
 */
-void qh_gausselim(realT **rows, int numrow, int numcol, boolT *sign, boolT *nearzero) {
+void qh_gausselim(realT **rows, int numrow, int numcol, bool *sign, bool *nearzero) {
   realT *ai, *ak, *rowp, *pivotrow;
   realT n, pivot, pivot_abs= 0.0, temp;
   int i, j, k, pivoti, flip=0;
 
-  *nearzero= False;
+  *nearzero= false;
   for (k=0; k < numrow; k++) {
     pivot_abs= fabs_((rows[k])[k]);
     pivoti= k;
@@ -643,7 +644,7 @@ void qh_gausselim(realT **rows, int numrow, int numcol, boolT *sign, boolT *near
       flip ^= 1;
     }
     if (pivot_abs <= qh NEARzero[k]) {
-      *nearzero= True;
+      *nearzero= true;
       if (pivot_abs == 0.0) {   /* remainder of column == 0 */
 #ifndef qh_NOtrace
         if (qh IStracing >= 4) {
@@ -774,9 +775,9 @@ coordT qh_getdistance(facetT *facet, facetT *neighbor, coordT *mindist, coordT *
   coordT dist, maxd, mind;
 
   FOREACHvertex_(facet->vertices)
-    vertex->seen= False;
+    vertex->seen= false;
   FOREACHvertex_(neighbor->vertices)
-    vertex->seen= True;
+    vertex->seen= true;
   mind= 0.0;
   maxd= 0.0;
   FOREACHvertex_(facet->vertices) {
@@ -809,7 +810,7 @@ coordT qh_getdistance(facetT *facet, facetT *neighbor, coordT *mindist, coordT *
   see:
     qh_normalize2
 */
-void qh_normalize(coordT *normal, int dim, boolT toporient) {
+void qh_normalize(coordT *normal, int dim, bool toporient) {
   qh_normalize2(normal, dim, toporient, NULL, NULL);
 } /* normalize */
 
@@ -845,11 +846,11 @@ void qh_normalize(coordT *normal, int dim, boolT toporient) {
       if nearzero
         sets norm to direction of maximum value
 */
-void qh_normalize2(coordT *normal, int dim, boolT toporient,
-            realT *minnorm, boolT *ismin) {
+void qh_normalize2(coordT *normal, int dim, bool toporient,
+            realT *minnorm, bool *ismin) {
   int k;
   realT *colp, *maxp, norm= 0, temp, *norm1, *norm2, *norm3;
-  boolT zerodiv;
+  bool zerodiv;
 
   norm1= normal+1;
   norm2= normal+2;
@@ -870,9 +871,9 @@ void qh_normalize2(coordT *normal, int dim, boolT toporient,
   }
   if (minnorm) {
     if (norm < *minnorm)
-      *ismin= True;
+      *ismin= true;
     else
-      *ismin= False;
+      *ismin= false;
   }
   wmin_(Wmindenom, norm);
   if (norm > qh MINdenom) {
@@ -980,7 +981,7 @@ void qh_setfacetplane(facetT *facet) {
   void **freelistp; /* used if !qh_NOmem by qh_memalloc_() */
   coordT *coord, *gmcoord;
   pointT *point0= SETfirstt_(facet->vertices, vertexT)->point;
-  boolT nearzero= False;
+  bool nearzero= false;
 
   zzinc_(Zsetplane);
   if (!facet->normal)
@@ -1052,22 +1053,22 @@ void qh_setfacetplane(facetT *facet) {
       }
     }
   }
-  facet->upperdelaunay= False;
+  facet->upperdelaunay= false;
   if (qh DELAUNAY) {
     if (qh UPPERdelaunay) {     /* matches qh_triangulate_facet and qh.lower_threshold in qh_initbuild */
       if (facet->normal[qh hull_dim -1] >= qh ANGLEround * qh_ZEROdelaunay)
-        facet->upperdelaunay= True;
+        facet->upperdelaunay= true;
     }else {
       if (facet->normal[qh hull_dim -1] > -qh ANGLEround * qh_ZEROdelaunay)
-        facet->upperdelaunay= True;
+        facet->upperdelaunay= true;
     }
   }
   if (qh PRINTstatistics || qh IStracing || qh TRACElevel || qh JOGGLEmax < REALmax) {
     qh old_randomdist= qh RANDOMdist;
-    qh RANDOMdist= False;
+    qh RANDOMdist= false;
     FOREACHvertex_(facet->vertices) {
       if (vertex->point != point0) {
-        boolT istrace= False;
+        bool istrace= false;
         zinc_(Zdiststat);
         qh_distplane(vertex->point, facet, &dist);
         dist= fabs_(dist);
@@ -1078,10 +1079,10 @@ void qh_setfacetplane(facetT *facet) {
           if (dist > qh max_outside) {
             qh max_outside= dist;  /* used by qh_maxouter() */
             if (dist > qh TRACEdist)
-              istrace= True;
+              istrace= true;
           }
         }else if (-dist > qh TRACEdist)
-          istrace= True;
+          istrace= true;
         if (istrace) {
           qh_fprintf(qh ferr, 3060, "qh_setfacetplane: ====== vertex p%d(v%d) increases max_outside to %2.2g for new facet f%d last p%d\n",
                 qh_pointid(vertex->point), vertex->id, dist, facet->id, qh furthest_id);
@@ -1153,7 +1154,7 @@ void qh_setfacetplane(facetT *facet) {
     Note that qh.one_merge is approx. 82 u M_a and norm is usually about M_d M_d M_d
 */
 void qh_sethyperplane_det(int dim, coordT **rows, coordT *point0,
-          boolT toporient, coordT *normal, realT *offset, boolT *nearzero) {
+          bool toporient, coordT *normal, realT *offset, bool *nearzero) {
   realT maxround, dist;
   int i;
   pointT *point;
@@ -1164,7 +1165,7 @@ void qh_sethyperplane_det(int dim, coordT **rows, coordT *point0,
     normal[1]= dX(0,1);
     qh_normalize2(normal, dim, toporient, NULL, NULL);
     *offset= -(point0[0]*normal[0]+point0[1]*normal[1]);
-    *nearzero= False;  /* since nearzero norm => incident points */
+    *nearzero= false;  /* since nearzero norm => incident points */
   }else if (dim == 3) {
     normal[0]= det2_(dY(2,0), dZ(2,0),
                      dY(1,0), dZ(1,0));
@@ -1182,7 +1183,7 @@ void qh_sethyperplane_det(int dim, coordT **rows, coordT *point0,
         dist= *offset + (point[0]*normal[0] + point[1]*normal[1]
                + point[2]*normal[2]);
         if (dist > maxround || dist < -maxround) {
-          *nearzero= True;
+          *nearzero= true;
           break;
         }
       }
@@ -1210,7 +1211,7 @@ void qh_sethyperplane_det(int dim, coordT **rows, coordT *point0,
         dist= *offset + (point[0]*normal[0] + point[1]*normal[1]
                + point[2]*normal[2] + point[3]*normal[3]);
         if (dist > maxround || dist < -maxround) {
-          *nearzero= True;
+          *nearzero= true;
           break;
         }
       }
@@ -1251,10 +1252,10 @@ void qh_sethyperplane_det(int dim, coordT **rows, coordT *point0,
     compute offset
 */
 void qh_sethyperplane_gauss(int dim, coordT **rows, pointT *point0,
-                boolT toporient, coordT *normal, coordT *offset, boolT *nearzero) {
+                bool toporient, coordT *normal, coordT *offset, bool *nearzero) {
   coordT *pointcoord, *normalcoef;
   int k;
-  boolT sign= toporient, nearzero2= False;
+  bool sign= toporient, nearzero2= false;
 
   qh_gausselim(rows, dim-1, dim, &sign, nearzero);
   for (k=dim-1; k--; ) {
@@ -1274,8 +1275,8 @@ void qh_sethyperplane_gauss(int dim, coordT **rows, pointT *point0,
     }
   }
   if (nearzero2)
-    *nearzero= True;
-  qh_normalize2(normal, dim, True, NULL, NULL);
+    *nearzero= true;
+  qh_normalize2(normal, dim, true, NULL, NULL);
   pointcoord= point0;
   normalcoef= normal;
   *offset= -(*pointcoord++ * *normalcoef++);

@@ -238,9 +238,9 @@ outputQhull(const char *outputflags)
         if(qh_qh->KEEPminArea < REALmax/2 || qh_qh->KEEParea || qh_qh->KEEPmerge || qh_qh->GOODvertex
                   || qh_qh->GOODpoint || qh_qh->GOODthreshold || qh_qh->SPLITthresholds){
             facetT *facet;
-            qh_qh->ONLYgood= False;
+            qh_qh->ONLYgood= false;
             FORALLfacet_(qh_qh->facet_list){
-                facet->good= True;
+                facet->good= true;
             }
             qh_prepare_output(qh_qh);
         }
@@ -259,7 +259,7 @@ void Qhull::
 prepareVoronoi(bool *isLower, int *voronoiVertexCount)
 {
   QH_TRY_(qh_qh){ // no object creation -- destructors skipped on longjmp()
-    boolT isLowerHull;
+    bool isLowerHull;
     vertexT *vertex;
 
     setT *vertices= qh_markvoronoi(qh_qh, facetList().first().getFacetT(), NULL, !qh_ALL, &isLowerHull, voronoiVertexCount);
@@ -302,7 +302,7 @@ runQhull(const char *inputComment2, int pointDimension, int pointCount, const re
     /************* Expansion of QH_TRY_ for debugging
     int QH_TRY_status;
     if(qh_qh->NOerrexit){
-        qh_qh->NOerrexit= False;
+        qh_qh->NOerrexit= false;
         QH_TRY_status= setjmp(qh_qh->errexit);
     }else{
         QH_TRY_status= QH_TRY_ERROR;
@@ -315,16 +315,16 @@ runQhull(const char *inputComment2, int pointDimension, int pointCount, const re
         *qh_qh->rbox_command= '\0';
         strncat( qh_qh->rbox_command, inputComment2, sizeof(qh_qh->rbox_command)-1);
         if(qh_qh->DELAUNAY){
-            qh_qh->PROJECTdelaunay= True;   // qh_init_B() calls qh_projectinput()
+            qh_qh->PROJECTdelaunay= true;   // qh_init_B() calls qh_projectinput()
         }
         pointT *newPoints= const_cast<pointT*>(pointCoordinates);
         int newDimension= pointDimension;
-        int newIsMalloc= False;
+        int newIsMalloc= false;
         if(qh_qh->HALFspace){
             --newDimension;
             initializeFeasiblePoint(newDimension);
             newPoints= qh_sethalfspace_all(qh_qh, pointDimension, pointCount, newPoints, qh_qh->feasible_point);
-            newIsMalloc= True;
+            newIsMalloc= true;
         }
         qh_init_B(qh_qh, newPoints, pointCount, newDimension, newIsMalloc);
         qh_qhull(qh_qh);

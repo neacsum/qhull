@@ -182,7 +182,7 @@ facetArea()
     if(qh_qh && !qh_facet->isarea){
         QH_TRY_(qh_qh){ // no object creation -- destructors skipped on longjmp()
             qh_facet->f.area= qh_facetarea(qh_qh, qh_facet);
-            qh_facet->isarea= True;
+            qh_facet->isarea= true;
         }
         qh_qh->NOerrexit= true;
         qh_qh->maybeThrowQhullMessage(QH_TRY_status);

@@ -114,7 +114,7 @@ toString(const char *tag, int code) const
 
 #//!\name Class helpers (static)
 
-//! True if this char is the first extra code
+//! true if this char is the first extra code
 bool RoadLogEvent::
 firstExtraCode(std::ostream &os, char c, char *extraCode){
     if(*extraCode){

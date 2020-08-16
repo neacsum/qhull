@@ -29,7 +29,7 @@
 #define QH_TRY_(qh) \
     int QH_TRY_status; \
     if(qh->NOerrexit){ \
-        qh->NOerrexit= False; \
+        qh->NOerrexit= false; \
         QH_TRY_status= setjmp(qh->errexit); \
     }else{ \
         throw QhullError(QH_TRY_ERROR, "Cannot invoke QH_TRY_() from inside a QH_TRY_.  Or missing 'qh->NOerrexit=true' after previously called QH_TRY_(qh){...}"); \
@@ -39,7 +39,7 @@
 #define QH_TRY_NO_THROW_(qh) \
     int QH_TRY_status; \
     if(qh->NOerrexit){ \
-        qh->NOerrexit= False; \
+        qh->NOerrexit= false; \
         QH_TRY_status= setjmp(qh->errexit); \
     }else{ \
         QH_TRY_status= QH_TRY_ERROR; \

@@ -111,29 +111,29 @@ inline void qhullUnused(T &x) { (void)x; }
 /***** -libqhull.c prototypes (alphabetical after qhull) ********************/
 
 void    qh_qhull(void);
-boolT   qh_addpoint(pointT *furthest, facetT *facet, boolT checkdist);
+bool   qh_addpoint(pointT *furthest, facetT *facet, bool checkdist);
 void    qh_build_withrestart(void);
 vertexT *qh_buildcone(pointT *furthest, facetT *facet, int goodhorizon, facetT **retryfacet);
-boolT   qh_buildcone_mergepinched(vertexT *apex, facetT *facet, facetT **retryfacet);
-boolT   qh_buildcone_onlygood(vertexT *apex, int goodhorizon);
+bool   qh_buildcone_mergepinched(vertexT *apex, facetT *facet, facetT **retryfacet);
+bool   qh_buildcone_onlygood(vertexT *apex, int goodhorizon);
 void    qh_buildhull(void);
 void    qh_buildtracing(pointT *furthest, facetT *facet);
 void    qh_errexit2(int exitcode, facetT *facet, facetT *otherfacet);
 void    qh_findhorizon(pointT *point, facetT *facet, int *goodvisible,int *goodhorizon);
 pointT *qh_nextfurthest(facetT **visible);
 void    qh_partitionall(setT *vertices, pointT *points,int npoints);
-void    qh_partitioncoplanar(pointT *point, facetT *facet, realT *dist, boolT allnew);
+void    qh_partitioncoplanar(pointT *point, facetT *facet, realT *dist, bool allnew);
 void    qh_partitionpoint(pointT *point, facetT *facet);
-void    qh_partitionvisible(boolT allpoints, int *numpoints);
+void    qh_partitionvisible(bool allpoints, int *numpoints);
 void    qh_joggle_restart(const char *reason);
 void    qh_printsummary(FILE *fp);
 
 /***** -global.c internal prototypes (alphabetical) ***********************/
 
 void    qh_appendprint(qh_PRINT format);
-void    qh_freebuild(boolT allmem);
+void    qh_freebuild(bool allmem);
 void    qh_freebuffers(void);
-void    qh_initbuffers(coordT *points, int numpoints, int dim, boolT ismalloc);
+void    qh_initbuffers(coordT *points, int numpoints, int dim, bool ismalloc);
 
 /***** -stat.c internal prototypes (alphabetical) ***********************/
 
@@ -147,6 +147,6 @@ void    qh_allstatF(void);
 void    qh_allstatG(void);
 void    qh_allstatH(void);
 void    qh_freebuffers(void);
-void    qh_initbuffers(coordT *points, int numpoints, int dim, boolT ismalloc);
+void    qh_initbuffers(coordT *points, int numpoints, int dim, bool ismalloc);
 
 #endif /* qhDEFqhulla */

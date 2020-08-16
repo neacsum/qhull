@@ -67,7 +67,7 @@ typedef enum {  /* must match mergetypes[] */
   qh_MERGEapex
     flag for qh_mergefacet() to indicate an apex merge
 */
-#define qh_MERGEapex     True
+#define qh_MERGEapex     true
 
 /*============ -structures- ====================*/
 
@@ -140,8 +140,8 @@ struct mergeT {         /* initialize in qh_appendmergeset */
 
 void    qh_premerge(int apexpointid, realT maxcentrum, realT maxangle);
 void    qh_postmerge(const char *reason, realT maxcentrum, realT maxangle,
-             boolT vneighbors);
-void    qh_all_merges(boolT othermerge, boolT vneighbors);
+             bool vneighbors);
+void    qh_all_merges(bool othermerge, bool vneighbors);
 void    qh_all_vertexmerges(int apexpointid, facetT *facet, facetT **retryfacet);
 void    qh_appendmergeset(facetT *facet, facetT *neighbor, mergeType mergetype, coordT dist, realT angle);
 void    qh_appendvertexmerge(vertexT *vertex, vertexT *destination, mergeType mergetype, realT distance, ridgeT *ridge1, ridgeT *ridge2);
@@ -150,7 +150,7 @@ void    qh_check_dupridge(facetT *facet1, realT dist1, facetT *facet2, realT dis
 void    qh_checkconnect(void /* qh.new_facets */);
 void    qh_checkdelfacet(facetT *facet, setT *mergeset);
 void    qh_checkdelridge(void /* qh.visible_facets, vertex_mergeset */);
-boolT   qh_checkzero(boolT testall);
+bool   qh_checkzero(bool testall);
 int     qh_compare_anglemerge(const void *p1, const void *p2);
 int     qh_compare_facetmerge(const void *p1, const void *p2);
 int     qh_comparevisit(const void *p1, const void *p2);
@@ -161,22 +161,22 @@ void    qh_delridge_merge(ridgeT *ridge);
 vertexT *qh_find_newvertex(vertexT *oldvertex, setT *vertices, setT *ridges);
 vertexT *qh_findbest_pinchedvertex(mergeT *merge, vertexT *apex, vertexT **pinchedp, realT *distp /* qh.newfacet_list */);
 vertexT *qh_findbest_ridgevertex(ridgeT *ridge, vertexT **pinchedp, coordT *distp);
-void    qh_findbest_test(boolT testcentrum, facetT *facet, facetT *neighbor,
+void    qh_findbest_test(bool testcentrum, facetT *facet, facetT *neighbor,
            facetT **bestfacet, realT *distp, realT *mindistp, realT *maxdistp);
 facetT *qh_findbestneighbor(facetT *facet, realT *distp, realT *mindistp, realT *maxdistp);
-void    qh_flippedmerges(facetT *facetlist, boolT *wasmerge);
-void    qh_forcedmerges(boolT *wasmerge);
+void    qh_flippedmerges(facetT *facetlist, bool *wasmerge);
+void    qh_forcedmerges(bool *wasmerge);
 void    qh_freemergesets(void);
 void    qh_getmergeset(facetT *facetlist);
 void    qh_getmergeset_initial(facetT *facetlist);
-boolT   qh_getpinchedmerges(vertexT *apex, coordT maxdupdist, boolT *iscoplanar /* qh.newfacet_list, vertex_mergeset */);
-boolT   qh_hasmerge(setT *mergeset, mergeType type, facetT *facetA, facetT *facetB);
+bool   qh_getpinchedmerges(vertexT *apex, coordT maxdupdist, bool *iscoplanar /* qh.newfacet_list, vertex_mergeset */);
+bool   qh_hasmerge(setT *mergeset, mergeType type, facetT *facetA, facetT *facetB);
 void    qh_hashridge(setT *hashtable, int hashsize, ridgeT *ridge, vertexT *oldvertex);
 ridgeT *qh_hashridge_find(setT *hashtable, int hashsize, ridgeT *ridge,
               vertexT *vertex, vertexT *oldvertex, int *hashslot);
 void    qh_initmergesets(void);
 void    qh_makeridges(facetT *facet);
-void    qh_mark_dupridges(facetT *facetlist, boolT allmerges);
+void    qh_mark_dupridges(facetT *facetlist, bool allmerges);
 void    qh_maybe_duplicateridge(ridgeT *ridge);
 void    qh_maybe_duplicateridges(facetT *facet);
 void    qh_maydropneighbor(facetT *facet);
@@ -185,16 +185,16 @@ void    qh_merge_nonconvex(facetT *facet1, facetT *facet2, mergeType mergetype);
 void    qh_merge_pinchedvertices(int apexpointid /* qh.newfacet_list */);
 void    qh_merge_twisted(facetT *facet1, facetT *facet2);
 void    qh_mergecycle(facetT *samecycle, facetT *newfacet);
-void    qh_mergecycle_all(facetT *facetlist, boolT *wasmerge);
+void    qh_mergecycle_all(facetT *facetlist, bool *wasmerge);
 void    qh_mergecycle_facets(facetT *samecycle, facetT *newfacet);
 void    qh_mergecycle_neighbors(facetT *samecycle, facetT *newfacet);
 void    qh_mergecycle_ridges(facetT *samecycle, facetT *newfacet);
 void    qh_mergecycle_vneighbors(facetT *samecycle, facetT *newfacet);
-void    qh_mergefacet(facetT *facet1, facetT *facet2, mergeType mergetype, realT *mindist, realT *maxdist, boolT mergeapex);
+void    qh_mergefacet(facetT *facet1, facetT *facet2, mergeType mergetype, realT *mindist, realT *maxdist, bool mergeapex);
 void    qh_mergefacet2d(facetT *facet1, facetT *facet2);
 void    qh_mergeneighbors(facetT *facet1, facetT *facet2);
 void    qh_mergeridges(facetT *facet1, facetT *facet2);
-void    qh_mergesimplex(facetT *facet1, facetT *facet2, boolT mergeapex);
+void    qh_mergesimplex(facetT *facet1, facetT *facet2, bool mergeapex);
 void    qh_mergevertex_del(vertexT *vertex, facetT *facet1, facetT *facet2);
 void    qh_mergevertex_neighbors(facetT *facet1, facetT *facet2);
 void    qh_mergevertices(setT *vertices1, setT **vertices);
@@ -204,26 +204,26 @@ void    qh_neighbor_vertices_facet(vertexT *vertexA, facetT *facet, setT **verti
 void    qh_newvertices(setT *vertices);
 mergeT *qh_next_vertexmerge(void);
 facetT *qh_opposite_horizonfacet(mergeT *merge, vertexT **vertex);
-boolT   qh_reducevertices(void);
+bool   qh_reducevertices(void);
 vertexT *qh_redundant_vertex(vertexT *vertex);
-boolT   qh_remove_extravertices(facetT *facet);
+bool   qh_remove_extravertices(facetT *facet);
 void    qh_remove_mergetype(setT *mergeset, mergeType type);
 void    qh_rename_adjacentvertex(vertexT *oldvertex, vertexT *newvertex, realT dist);
 vertexT *qh_rename_sharedvertex(vertexT *vertex, facetT *facet);
-boolT   qh_renameridgevertex(ridgeT *ridge, vertexT *oldvertex, vertexT *newvertex);
+bool   qh_renameridgevertex(ridgeT *ridge, vertexT *oldvertex, vertexT *newvertex);
 void    qh_renamevertex(vertexT *oldvertex, vertexT *newvertex, setT *ridges,
                         facetT *oldfacet, facetT *neighborA);
-boolT   qh_test_appendmerge(facetT *facet, facetT *neighbor, boolT simplicial);
+bool   qh_test_appendmerge(facetT *facet, facetT *neighbor, bool simplicial);
 void    qh_test_degen_neighbors(facetT *facet);
-boolT   qh_test_centrum_merge(facetT *facet, facetT *neighbor, realT angle, boolT okangle);
-boolT   qh_test_nonsimplicial_merge(facetT *facet, facetT *neighbor, realT angle, boolT okangle);
+bool   qh_test_centrum_merge(facetT *facet, facetT *neighbor, realT angle, bool okangle);
+bool   qh_test_nonsimplicial_merge(facetT *facet, facetT *neighbor, realT angle, bool okangle);
 void    qh_test_redundant_neighbors(facetT *facet);
-boolT   qh_test_vneighbors(void /* qh.newfacet_list */);
+bool   qh_test_vneighbors(void /* qh.newfacet_list */);
 void    qh_tracemerge(facetT *facet1, facetT *facet2, mergeType mergetype);
 void    qh_tracemerging(void);
 void    qh_undo_newfacets(void);
 void    qh_updatetested(facetT *facet1, facetT *facet2);
-setT   *qh_vertexridges(vertexT *vertex, boolT allneighbors);
+setT   *qh_vertexridges(vertexT *vertex, bool allneighbors);
 void    qh_vertexridges_facet(vertexT *vertex, facetT *facet, setT **ridges);
 void    qh_willdelete(facetT *facet, facetT *replace);
 

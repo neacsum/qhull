@@ -15,6 +15,7 @@
 */
 
 #include <qhull/qhull_ra.h>
+#include <stdbool.h>
 
 /*================== functions in alphabetic order ============*/
 
@@ -80,12 +81,12 @@ void qh_crossproduct(int dim, realT vecA[3], realT vecB[3], realT vecC[3]){
     if dim >= 4
       nearzero iff diagonal[k] < qh->NEARzero[k]
 */
-realT qh_determinant(qhT *qh, realT **rows, int dim, boolT *nearzero) {
+realT qh_determinant(qhT *qh, realT **rows, int dim, bool *nearzero) {
   realT det=0;
   int i;
-  boolT sign= False;
+  bool sign= false;
 
-  *nearzero= False;
+  *nearzero= false;
   if (dim < 2) {
     qh_fprintf(qh, qh->ferr, 6005, "qhull internal error (qh_determinate): only implemented for dimension >= 2\n");
     qh_errexit(qh, qh_ERRqhull, NULL, NULL);
@@ -93,13 +94,13 @@ realT qh_determinant(qhT *qh, realT **rows, int dim, boolT *nearzero) {
     det= det2_(rows[0][0], rows[0][1],
                  rows[1][0], rows[1][1]);
     if (fabs_(det) < 10*qh->NEARzero[1])  /* QH11031 FIX: not really correct, what should this be? */
-      *nearzero= True;
+      *nearzero= true;
   }else if (dim == 3) {
     det= det3_(rows[0][0], rows[0][1], rows[0][2],
                  rows[1][0], rows[1][1], rows[1][2],
                  rows[2][0], rows[2][1], rows[2][2]);
     if (fabs_(det) < 10*qh->NEARzero[2])  /* QH11031 FIX: what should this be?  det 5.5e-12 was flat for qh_maxsimplex of qdelaunay 0,0 27,27 -36,36 -9,63 */
-      *nearzero= True;
+      *nearzero= true;
   }else {
     qh_gausselim(qh, rows, dim, dim, &sign, nearzero);  /* if nearzero, diagonal still ok */
     det= 1.0;
@@ -267,7 +268,7 @@ void qh_detroundoff(qhT *qh) {
   qh->NEARinside= qh->ONEmerge * qh_RATIOnearinside; /* only used if qh->KEEPnearinside */
   if (qh->JOGGLEmax < REALmax/2 && (qh->KEEPcoplanar || qh->KEEPinside)) {
     realT maxdist;             /* adjust qh.NEARinside for joggle */
-    qh->KEEPnearinside= True;
+    qh->KEEPnearinside= true;
     maxdist= sqrt((realT)qh->hull_dim) * qh->JOGGLEmax + qh->DISTround;
     maxdist= 2*maxdist;        /* vertex and coplanar point can joggle in opposite directions */
     maximize_(qh->NEARinside, maxdist);  /* must agree with qh_nearcoplanar() */
@@ -331,7 +332,7 @@ void qh_detroundoff(qhT *qh) {
     construct qm_matrix by subtracting apex from points
     compute determinate
 */
-realT qh_detsimplex(qhT *qh, pointT *apex, setT *points, int dim, boolT *nearzero) {
+realT qh_detsimplex(qhT *qh, pointT *apex, setT *points, int dim, bool *nearzero) {
   pointT *coorda, *coordp, *gmcoord, *point, **pointp;
   coordT **rows;
   int k,  i=0;
@@ -442,7 +443,7 @@ realT qh_distround(qhT *qh, int dimension, realT maxabs, realT maxsumabs) {
     else
       return 0 and zerodiv
 */
-realT qh_divzero(realT numer, realT denom, realT mindenom1, boolT *zerodiv) {
+realT qh_divzero(realT numer, realT denom, realT mindenom1, bool *zerodiv) {
   realT temp, numerx, denomx;
 
 
@@ -450,19 +451,19 @@ realT qh_divzero(realT numer, realT denom, realT mindenom1, boolT *zerodiv) {
     numerx= fabs_(numer);
     denomx= fabs_(denom);
     if (numerx < denomx) {
-      *zerodiv= False;
+      *zerodiv= false;
       return numer/denom;
     }else {
-      *zerodiv= True;
+      *zerodiv= true;
       return 0.0;
     }
   }
   temp= denom/numer;
   if (temp > mindenom1 || temp < -mindenom1) {
-    *zerodiv= False;
+    *zerodiv= false;
     return numer/denom;
   }else {
-    *zerodiv= True;
+    *zerodiv= true;
     return 0.0;
   }
 } /* divzero */
@@ -507,7 +508,7 @@ realT qh_facetarea(qhT *qh, facetT *facet) {
       centrum= qh_getcentrum(qh, facet);
     FOREACHridge_(facet->ridges)
       area += qh_facetarea_simplex(qh, qh->hull_dim, centrum, ridge->vertices,
-                 NULL, (boolT)(ridge->top == facet),  facet->normal, &facet->offset);
+                 NULL, (bool)(ridge->top == facet),  facet->normal, &facet->offset);
     if (qh->CENTERtype != qh_AScentrum)
       qh_memfree(qh, centrum, qh->normal_size);
   }
@@ -551,13 +552,13 @@ realT qh_facetarea(qhT *qh, facetT *facet) {
     scale and flip sign for area
 */
 realT qh_facetarea_simplex(qhT *qh, int dim, coordT *apex, setT *vertices,
-        vertexT *notvertex,  boolT toporient, coordT *normal, realT *offset) {
+        vertexT *notvertex,  bool toporient, coordT *normal, realT *offset) {
   pointT *coorda, *coordp, *gmcoord;
   coordT **rows, *normalp;
   int k,  i=0;
   realT area, dist;
   vertexT *vertex, **vertexp;
-  boolT nearzero;
+  bool nearzero;
 
   gmcoord= qh->gm_matrix;
   rows= qh->gm_row;
@@ -667,13 +668,13 @@ facetT *qh_findgooddist(qhT *qh, pointT *point, facetT *facetA, realT *distp,
                facetT **facetlist) {
   realT bestdist= -REALmax, dist;
   facetT *neighbor, **neighborp, *bestfacet=NULL, *facet;
-  boolT goodseen= False;
+  bool goodseen= false;
 
   if (facetA->good) {
     zzinc_(Zcheckpart);  /* calls from check_bestdist occur after print stats */
     qh_distplane(qh, point, facetA, &bestdist);
     bestfacet= facetA;
-    goodseen= True;
+    goodseen= true;
   }
   qh_removefacet(qh, facetA);
   qh_appendfacet(qh, facetA);
@@ -692,7 +693,7 @@ facetT *qh_findgooddist(qhT *qh, pointT *point, facetT *facetA, realT *distp,
         qh_removefacet(qh, neighbor);
         qh_appendfacet(qh, neighbor);
         if (neighbor->good) {
-          goodseen= True;
+          goodseen= true;
           if (dist > bestdist) {
             bestdist= dist;
             bestfacet= neighbor;
@@ -838,7 +839,7 @@ void qh_getarea(qhT *qh, facetT *facetlist) {
       continue;
     if (!facet->isarea) {
       facet->f.area= qh_facetarea(qh, facet);
-      facet->isarea= True;
+      facet->isarea= true;
     }
     area= facet->f.area;
     if (qh->DELAUNAY) {
@@ -855,7 +856,7 @@ void qh_getarea(qhT *qh, facetT *facetlist) {
       wmin_(Wareamin, area);
     }
   }
-  qh->hasAreaVolume= True;
+  qh->hasAreaVolume= true;
 } /* getarea */
 
 /*-<a                             href="qh-geom_r.htm#TOC"
@@ -880,7 +881,7 @@ void qh_getarea(qhT *qh, facetT *facetlist) {
         compute inner product of row and rowA
         reduce rowA by row * inner product
 */
-boolT qh_gram_schmidt(qhT *qh, int dim, realT **row) {
+bool qh_gram_schmidt(qhT *qh, int dim, realT **row) {
   realT *rowi, *rowj, norm;
   int i, j, k;
 
@@ -891,7 +892,7 @@ boolT qh_gram_schmidt(qhT *qh, int dim, realT **row) {
     norm= sqrt(norm);
     wmin_(Wmindenom, norm);
     if (norm == 0.0)  /* either 0 or overflow due to sqrt */
-      return False;
+      return false;
     for (k=dim; k--; )
       *(--rowi) /= norm;
     for (j=i+1; j < dim; j++) {
@@ -902,7 +903,7 @@ boolT qh_gram_schmidt(qhT *qh, int dim, realT **row) {
         *(--rowj) -= *(--rowi) * norm;
     }
   }
-  return True;
+  return true;
 } /* gram_schmidt */
 
 
@@ -910,7 +911,7 @@ boolT qh_gram_schmidt(qhT *qh, int dim, realT **row) {
   >-------------------------------</a><a name="inthresholds">-</a>
 
   qh_inthresholds(qh, normal, angle )
-    return True if normal within qh.lower_/upper_threshold
+    return true if normal within qh.lower_/upper_threshold
 
   returns:
     estimate of angle by summing of threshold diffs
@@ -928,8 +929,8 @@ boolT qh_gram_schmidt(qhT *qh, int dim, realT **row) {
     for each dimension
       test threshold
 */
-boolT qh_inthresholds(qhT *qh, coordT *normal, realT *angle) {
-  boolT within= True;
+bool qh_inthresholds(qhT *qh, coordT *normal, realT *angle) {
+  bool within= true;
   int k;
   realT threshold;
 
@@ -939,7 +940,7 @@ boolT qh_inthresholds(qhT *qh, coordT *normal, realT *angle) {
     threshold= qh->lower_threshold[k];
     if (threshold > -REALmax/2) {
       if (normal[k] < threshold)
-        within= False;
+        within= false;
       if (angle) {
         threshold -= normal[k];
         *angle += fabs_(threshold);
@@ -948,7 +949,7 @@ boolT qh_inthresholds(qhT *qh, coordT *normal, realT *angle) {
     if (qh->upper_threshold[k] < REALmax/2) {
       threshold= qh->upper_threshold[k];
       if (normal[k] > threshold)
-        within= False;
+        within= false;
       if (angle) {
         threshold -= normal[k];
         *angle += fabs_(threshold);
@@ -1005,7 +1006,7 @@ void qh_joggleinput(qhT *qh) {
           qh->num_points);
       qh_errexit(qh, qh_ERRmem, NULL, NULL);
     }
-    qh->POINTSmalloc= True;
+    qh->POINTSmalloc= true;
     if (qh->JOGGLEmax == 0.0) {
       qh->JOGGLEmax= qh_detjoggle(qh, qh->input_points, qh->num_points, qh->hull_dim);
       qh_option(qh, "QJoggle", NULL, &qh->JOGGLEmax);
@@ -1107,9 +1108,9 @@ setT *qh_maxmin(qhT *qh, pointT *points, int numpoints, int dimension) {
   qh->MAXwidth= -REALmax;
   qh->MAXsumcoord= 0.0;
   qh->min_vertex= 0.0;
-  qh->WAScoplanar= False;
+  qh->WAScoplanar= false;
   if (qh->ZEROcentrum)
-    qh->ZEROall_ok= True;
+    qh->ZEROall_ok= true;
   if (REALmin < REALepsilon && REALmin < REALmax && REALmin > -REALmax
   && REALmax > 0.0 && -REALmax < 0.0)
     ; /* all ok */
@@ -1230,7 +1231,7 @@ realT qh_maxouter(qhT *qh) {
 */
 void qh_maxsimplex(qhT *qh, int dim, setT *maxpoints, pointT *points, int numpoints, setT **simplex) {
   pointT *point, **pointp, *pointtemp, *maxpoint, *minx=NULL, *maxx=NULL;
-  boolT nearzero, maxnearzero= False, maybe_falsenarrow;
+  bool nearzero, maxnearzero= false, maybe_falsenarrow;
   int i, sizinit;
   realT maxdet= -1.0, prevdet= -1.0, det, mincoord= REALmax, maxcoord= -REALmax, mindet, ratio, targetdet;
 
@@ -1299,14 +1300,14 @@ void qh_maxsimplex(qhT *qh, int dim, setT *maxpoints, pointT *points, int numpoi
         }
       }
     }
-    maybe_falsenarrow= False;
+    maybe_falsenarrow= false;
     ratio= 1.0;
     targetdet= prevdet * qh->MAXwidth;
     mindet= 10 * qh_RATIOmaxsimplex * targetdet;
     if (maxdet > 0.0) {
       ratio= maxdet / targetdet;
       if (ratio < qh_RATIOmaxsimplex)
-        maybe_falsenarrow= True;
+        maybe_falsenarrow= true;
     }
     if (!maxpoint || maxnearzero || maybe_falsenarrow) {
       zinc_(Zsearchpoints);
@@ -1399,9 +1400,9 @@ int qh_mindiff(realT *vecA, realT *vecB, int dim) {
     make facet outside oriented via qh.interior_point
 
   returns:
-    True if facet reversed orientation.
+    true if facet reversed orientation.
 */
-boolT qh_orientoutside(qhT *qh, facetT *facet) {
+bool qh_orientoutside(qhT *qh, facetT *facet) {
   int k;
   realT dist;
 
@@ -1410,9 +1411,9 @@ boolT qh_orientoutside(qhT *qh, facetT *facet) {
     for (k=qh->hull_dim; k--; )
       facet->normal[k]= -facet->normal[k];
     facet->offset= -facet->offset;
-    return True;
+    return true;
   }
-  return False;
+  return false;
 } /* orientoutside */
 
 /*-<a                             href="qh-geom_r.htm#TOC"
@@ -1636,7 +1637,7 @@ void qh_projectinput(qhT *qh) {
   if (qh->POINTSmalloc)
     qh_free(qh->first_point);
   qh->first_point= newpoints;
-  qh->POINTSmalloc= True;
+  qh->POINTSmalloc= true;
   qh->temp_malloc= NULL;
   if (qh->DELAUNAY && qh->ATinfinity) {
     coord= qh->first_point;
@@ -1746,7 +1747,7 @@ void qh_rotateinput(qhT *qh, realT **rows) {
 
   if (!qh->POINTSmalloc) {
     qh->first_point= qh_copypoints(qh, qh->first_point, qh->num_points, qh->hull_dim);
-    qh->POINTSmalloc= True;
+    qh->POINTSmalloc= true;
   }
   qh_rotatepoints(qh, qh->first_point, qh->num_points, qh->hull_dim, rows);
 }  /* rotateinput */
@@ -1808,7 +1809,7 @@ void qh_scaleinput(qhT *qh) {
 
   if (!qh->POINTSmalloc) {
     qh->first_point= qh_copypoints(qh, qh->first_point, qh->num_points, qh->hull_dim);
-    qh->POINTSmalloc= True;
+    qh->POINTSmalloc= true;
   }
   qh_scalepoints(qh, qh->first_point, qh->num_points, qh->hull_dim,
        qh->lower_bound, qh->upper_bound);
@@ -1842,7 +1843,7 @@ void qh_scalelast(qhT *qh, coordT *points, int numpoints, int dim, coordT low,
   realT scale, shift;
   coordT *coord, newlow;
   int i;
-  boolT nearzero= False;
+  bool nearzero= false;
 
   newlow= 0.0;
   trace4((qh, qh->ferr, 4013, "qh_scalelast: scale last coordinate from [%2.2g, %2.2g] to [%2.2g, %2.2g]\n",
@@ -1889,7 +1890,7 @@ void qh_scalepoints(qhT *qh, pointT *points, int numpoints, int dim,
         realT *newlows, realT *newhighs) {
   int i,k;
   realT shift, scale, *coord, low, high, newlow, newhigh, mincoord, maxcoord;
-  boolT nearzero= False;
+  bool nearzero= false;
 
   for (k=0; k < dim; k++) {
     newhigh= newhighs[k];
@@ -2008,13 +2009,13 @@ void qh_setdelaunay(qhT *qh, int dim, int count, pointT *points) {
     compute distance from feasible point to halfspace
     divide each normal coefficient by -dist
 */
-boolT qh_sethalfspace(qhT *qh, int dim, coordT *coords, coordT **nextp,
+bool qh_sethalfspace(qhT *qh, int dim, coordT *coords, coordT **nextp,
          coordT *normal, coordT *offset, coordT *feasible) {
   coordT *normp= normal, *feasiblep= feasible, *coordp= coords;
   realT dist;
   realT r; /*bug fix*/
   int k;
-  boolT zerodiv;
+  bool zerodiv;
 
   dist= *offset;
   for (k=dim; k--; )
@@ -2043,7 +2044,7 @@ boolT qh_sethalfspace(qhT *qh, int dim, coordT *coords, coordT **nextp,
     qh_fprintf(qh, qh->ferr, 8023, "\n");
   }
 #endif
-  return True;
+  return true;
 LABELerroroutside:
   feasiblep= feasible;
   normp= normal;
@@ -2058,7 +2059,7 @@ LABELerroroutside:
   qh_fprintf(qh, qh->ferr, 8029, " and distance: ");
   qh_fprintf(qh, qh->ferr, 8030, qh_REAL_1, dist);
   qh_fprintf(qh, qh->ferr, 8031, "\n");
-  return False;
+  return false;
 } /* sethalfspace */
 
 /*-<a                             href="qh-geom_r.htm#TOC"
@@ -2127,9 +2128,9 @@ coordT *qh_sethalfspace_all(qhT *qh, int dim, int count, coordT *halfspaces, poi
       if two facets are in different quadrants
         set issharp
 */
-boolT qh_sharpnewfacets(qhT *qh) {
+bool qh_sharpnewfacets(qhT *qh) {
   facetT *facet;
-  boolT issharp= False;
+  bool issharp= false;
   int *quadrant, k;
 
   quadrant= (int *)qh_memalloc(qh, qh->hull_dim * (int)sizeof(int));
@@ -2140,7 +2141,7 @@ boolT qh_sharpnewfacets(qhT *qh) {
     }else {
       for (k=qh->hull_dim; k--; ) {
         if (quadrant[ k] != (facet->normal[ k] > 0)) {
-          issharp= True;
+          issharp= true;
           break;
         }
       }
@@ -2223,7 +2224,7 @@ pointT *qh_voronoi_center(qhT *qh, int dim, setT *points) {
   int i, j, k, size= qh_setsize(qh, points);
   coordT *gmcoord;
   realT *diffp, sum2, *sum2row, *sum2p, det, factor;
-  boolT nearzero, infinite;
+  bool nearzero, infinite;
 
   if (size == dim+1)
     simplex= points;

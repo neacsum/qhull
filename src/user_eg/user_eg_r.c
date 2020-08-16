@@ -126,7 +126,7 @@ warning:
 void findDelaunay(qhT *qh, int dim) {
   int k;
   coordT point[ 100];
-  boolT isoutside;
+  bool isoutside;
   realT bestdist;
   facetT *facet;
   vertexT *vertex, **vertexp;
@@ -188,7 +188,7 @@ int main(int argc, char *argv[]) {
   int numpoints;            /* number of points */
   coordT points[(DIM+1)*TOTpoints]; /* array of coordinates for each point */
   coordT *rows[TOTpoints];
-  boolT ismalloc= False;    /* True if qhull should free points in qh_freeqhull() or reallocation */
+  bool ismalloc= false;    /* true if qhull should free points in qh_freeqhull() or reallocation */
   char flags[250];          /* option flags for qhull, see qh-quick.htm */
   FILE *outfile= stdout;    /* output from qh_produce_output()
                                use NULL to skip qh_produce_output() */
@@ -272,10 +272,10 @@ Try -- user_eg 'T1' 'T1' 'T1'\n\
     if (!exitcode) {
       /* Trap Qhull errors from findDelaunay().  Without the setjmp(), Qhull
          will exit() after reporting an error */
-      qh->NOerrexit= False;
+      qh->NOerrexit= false;
       findDelaunay(qh, DIM);
     }
-    qh->NOerrexit= True;
+    qh->NOerrexit= true;
   }
   {
     coordT pointsB[DIM*TOTpoints]; /* array of coordinates for each point */

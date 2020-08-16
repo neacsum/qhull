@@ -324,7 +324,7 @@ void qh_allstatistics(void) {
   int i;
 
   for(i=ZEND; i--; )
-    qhstat printed[i]= False;
+    qhstat printed[i]= false;
 } /* allstatistics */
 
 #if qh_KEEPstatistics
@@ -342,7 +342,7 @@ void qh_collectstatistics(void) {
   int sizneighbors, sizridges, sizvertices, i;
 
   qh old_randomdist= qh RANDOMdist;
-  qh RANDOMdist= False;
+  qh RANDOMdist= false;
   zval_(Zmempoints)= qh num_points * qh normal_size + (int)sizeof(qhT) + (int)sizeof(qhstatT);
   zval_(Zmemfacets)= 0;
   zval_(Zmemridges)= 0;
@@ -367,11 +367,11 @@ void qh_collectstatistics(void) {
       qh_errexit(qh_ERRqhull, NULL, NULL);
   }
   FORALLfacets
-    facet->seen= False;
+    facet->seen= false;
   if (qh DELAUNAY) {
     FORALLfacets {
       if (facet->upperdelaunay != qh UPPERdelaunay)
-        facet->seen= True; /* remove from angle statistics */
+        facet->seen= true; /* remove from angle statistics */
     }
   }
   FORALLfacets {
@@ -412,7 +412,7 @@ void qh_collectstatistics(void) {
       zadd_(Zmempoints, (int)sizeof(setT) + SETelemsize * qh_setsize(facet->coplanarset));
     if (facet->seen) /* Delaunay upper envelope */
       continue;
-    facet->seen= True;
+    facet->seen= true;
     FOREACHneighbor_(facet) {
       if (neighbor == qh_DUPLICATEridge || neighbor == qh_MERGEridge
           || neighbor->seen || !facet->normal || !neighbor->normal)
@@ -539,13 +539,13 @@ void qh_initstatistics(void) {
   >-------------------------------</a><a name="newstats">-</a>
 
   qh_newstats( )
-    returns True if statistics for zdoc
+    returns true if statistics for zdoc
 
   returns:
     next zdoc
 */
-boolT qh_newstats(int idx, int *nextindex) {
-  boolT isnew= False;
+bool qh_newstats(int idx, int *nextindex) {
+  bool isnew= false;
   int start, i;
 
   if (qhstat type[qhstat id[idx]] == zdoc)
@@ -554,7 +554,7 @@ boolT qh_newstats(int idx, int *nextindex) {
     start= idx;
   for(i= start; i < qhstat next && qhstat type[qhstat id[i]] != zdoc; i++) {
     if (!qh_nostatistic(qhstat id[i]) && !qhstat printed[qhstat id[i]])
-        isnew= True;
+        isnew= true;
   }
   *nextindex= i;
   return isnew;
@@ -566,14 +566,14 @@ boolT qh_newstats(int idx, int *nextindex) {
   qh_nostatistic( index )
     true if no statistic to print
 */
-boolT qh_nostatistic(int i) {
+bool qh_nostatistic(int i) {
 
   if ((qhstat type[i] > ZTYPEreal
        &&qhstat stats[i].r == qhstat init[(unsigned char)(qhstat type[i])].r)
       || (qhstat type[i] < ZTYPEreal
           &&qhstat stats[i].i == qhstat init[(unsigned char)(qhstat type[i])].i))
-    return True;
-  return False;
+    return true;
+  return false;
 } /* nostatistic */
 
 #if qh_KEEPstatistics
@@ -676,7 +676,7 @@ void qh_printstatlevel(FILE *fp, int id) {
   }
   if (qh_nostatistic(id) || !qhstat doc[id])
     return;
-  qhstat printed[id]= True;
+  qhstat printed[id]= true;
   if (qhstat count[id] != -1
       && qhstat stats[(unsigned char)(qhstat count[id])].i == 0)
     qh_fprintf(fp, 9361, " *0 cnt*");

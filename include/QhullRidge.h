@@ -47,8 +47,8 @@ topological information:
     top,bottom          neighboring facets with orientation
 
 geometric information:
-    tested              True if ridge is clearly convex
-    nonconvex           True if ridge is non-convex
+    tested              true if ridge is clearly convex
+    nonconvex           true if ridge is non-convex
 */
 
 class QhullRidge {

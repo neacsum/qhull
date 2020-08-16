@@ -116,7 +116,7 @@ void adddiamond(qhT *qh, coordT *points, int numpoints, int numnew, int dim) {
   int j,k;
   coordT *point;
   facetT *facet;
-  boolT isoutside;
+  bool isoutside;
   realT bestdist;
 
   if (qh->JOGGLEmax < REALmax/2 && !qh->PREmerge)
@@ -138,7 +138,7 @@ void adddiamond(qhT *qh, coordT *points, int numpoints, int numnew, int dim) {
     }
     facet= qh_findbestfacet(qh, point, !qh_ALL, &bestdist, &isoutside);
     if (isoutside) {
-      if (!qh_addpoint(qh, point, facet, False))
+      if (!qh_addpoint(qh, point, facet, false))
         break;  /* user requested an early exit with 'TVn' or 'TCn' */
     }
     printf("%d vertices and %d facets\n",
@@ -187,7 +187,7 @@ void addDelaunay(qhT *qh, coordT *points, int numpoints, int numnew, int dim) {
   coordT *point, realr;
   facetT *facet;
   realT bestdist;
-  boolT isoutside;
+  bool isoutside;
 
   if (qh->JOGGLEmax < REALmax/2 && !qh->PREmerge)
     qh_fprintf(qh, qh->ferr, 7097, "qhull warning (user_eg2/addDelaunay): joggle 'QJ' is enabled.  Output is simplicial (i.e., triangles in 2-D)\n");
@@ -207,7 +207,7 @@ void addDelaunay(qhT *qh, coordT *points, int numpoints, int numnew, int dim) {
     qh_setdelaunay(qh, dim, 1, point);
     facet= qh_findbestfacet(qh, point, !qh_ALL, &bestdist, &isoutside);
     if (isoutside) {
-      if (!qh_addpoint(qh, point, facet, False))
+      if (!qh_addpoint(qh, point, facet, false))
         break;  /* user requested an early exit with 'TVn' or 'TCn' */
     }
     qh_printpoint(qh, stdout, "added point", point);
@@ -237,7 +237,7 @@ warning:
 void findDelaunay(qhT *qh, int dim) {
   int k;
   coordT point[ 100];
-  boolT isoutside;
+  bool isoutside;
   realT bestdist;
   facetT *facet;
   vertexT *vertex, **vertexp;
@@ -305,7 +305,7 @@ void addhalf(qhT *qh, coordT *points, int numpoints, int numnew, int dim, coordT
   int j,k;
   coordT *point, normal[100], offset, *next;
   facetT *facet;
-  boolT isoutside;
+  bool isoutside;
   realT bestdist;
 
   if (qh->JOGGLEmax < REALmax/2 && !qh->PREmerge)
@@ -325,7 +325,7 @@ void addhalf(qhT *qh, coordT *points, int numpoints, int numnew, int dim, coordT
     qh_sethalfspace(qh, dim, point, &next, normal, &offset, feasible);
     facet= qh_findbestfacet(qh, point, !qh_ALL, &bestdist, &isoutside);
     if (isoutside) {
-      if (!qh_addpoint(qh, point, facet, False))
+      if (!qh_addpoint(qh, point, facet, false))
         break;  /* user requested an early exit with 'TVn' or 'TCn' */
     }
     qh_printpoint(qh, stdout, "added offset -1 and normal", normal);
@@ -355,7 +355,7 @@ void addhalf(qhT *qh, coordT *points, int numpoints, int numnew, int dim, coordT
 
 */
 int main(int argc, char *argv[]) {
-  boolT ismalloc;
+  bool ismalloc;
   int curlong, totlong, exitcode;  /* used if !qh_NOmem */
   char options [2000];
   qhT qh_qh;
@@ -372,7 +372,7 @@ linked to Qhull's non-reentrant library, libqhullstatic.\n\
 Try -- user_eg2 'T1' 'T1' 'T1'\n\
 \n");
 
-  ismalloc= False;      /* True if qh_freeqhull should 'free(array)' */
+  ismalloc= false;      /* true if qh_freeqhull should 'free(array)' */
   /*
     Run 1: convex hull
   */
@@ -381,7 +381,7 @@ Try -- user_eg2 'T1' 'T1' 'T1'\n\
   if (!exitcode) {
     coordT array[TOTpoints][DIM];
 
-    qh->NOerrexit= False;
+    qh->NOerrexit= false;
     strcat(qh->rbox_command, "user_eg2 cube example");
     sprintf(options, "qhull s Tcv Q11 %s ", argc >= 2 ? argv[1] : "");
     qh_initflags(qh, options);
@@ -405,7 +405,7 @@ Try -- user_eg2 'T1' 'T1' 'T1'\n\
       qh_check_points(qh);
     fflush(NULL);
   }
-  qh->NOerrexit= True;
+  qh->NOerrexit= true;
 #ifdef qh_NOmem
   qh_freeqhull(qh, qh_ALL);
 #else
@@ -424,7 +424,7 @@ Try -- user_eg2 'T1' 'T1' 'T1'\n\
   if (!exitcode) {
     coordT array[TOTpoints][DIM];
 
-    qh->NOerrexit= False;
+    qh->NOerrexit= false;
     strcat(qh->rbox_command, "user_eg2 Delaunay example");
     sprintf(options, "qhull s d Tcv %s", argc >= 3 ? argv[2] : "");
     qh_initflags(qh, options);
@@ -432,7 +432,7 @@ Try -- user_eg2 'T1' 'T1' 'T1'\n\
     makeDelaunay(qh, array[0], SIZEcube, DIM);
     /* Instead of makeDelaunay with qh_setdelaunay, you may
        produce a 2-d array of points, set DIM to 2, and set
-       qh->PROJECTdelaunay to True.  qh_init_B will call
+       qh->PROJECTdelaunay to true.  qh_init_B will call
        qh_projectinput to project the points to the paraboloid
        and add a point "at-infinity".
     */
@@ -456,7 +456,7 @@ Try -- user_eg2 'T1' 'T1' 'T1'\n\
       qh_check_points(qh);
     fflush(NULL);
   }
-  qh->NOerrexit= True;
+  qh->NOerrexit= true;
 #ifdef qh_NOmem
   qh_freeqhull(qh, qh_ALL);
 #else
@@ -476,7 +476,7 @@ Try -- user_eg2 'T1' 'T1' 'T1'\n\
     coordT array[TOTpoints][DIM+1];  /* +1 for halfspace offset */
     pointT *points;
 
-    qh->NOerrexit= False;
+    qh->NOerrexit= false;
     strcat(qh->rbox_command, "user_eg2 halfspace example");
     sprintf(options, "qhull H0 s Tcv %s", argc >= 4 ? argv[3] : "");
     qh_initflags(qh, options);
@@ -486,7 +486,7 @@ Try -- user_eg2 'T1' 'T1' 'T1'\n\
     /* you may malloc and set qh->feasible_point directly.  It is only used for
        option 'Fp' */
     points= qh_sethalfspace_all(qh, DIM+1, SIZEcube, array[0], qh->feasible_point);
-    qh_init_B(qh, points, SIZEcube, DIM, True); /* qh_freeqhull frees points */
+    qh_init_B(qh, points, SIZEcube, DIM, true); /* qh_freeqhull frees points */
     qh_qhull(qh);
     fflush(NULL);
     qh_check_output(qh);
@@ -502,8 +502,8 @@ Try -- user_eg2 'T1' 'T1' 'T1'\n\
       qh_check_points(qh);
     fflush(NULL);
   }
-  qh->NOerrexit= True;
-  qh->NOerrexit= True;
+  qh->NOerrexit= true;
+  qh->NOerrexit= true;
 #ifdef qh_NOmem
   qh_freeqhull(qh, qh_ALL);
 #else
@@ -531,7 +531,7 @@ void qh_errexit(qhT *qh, int exitcode, facetT *facet, ridgeT *ridge) {
     fprintf(qh->ferr, "qhull error while handling previous error in qh_errexit.  Exit program\n");
     exit(1);
   }
-  qh->ERREXITcalled= True;
+  qh->ERREXITcalled= true;
   if (!qh->QHULLfinished)
     qh->hulltime= (unsigned)clock() - qh->hulltime;
   fprintf(qh->ferr, "\nWhile executing: %s | %s\n", qh->rbox_command, qh->qhull_command);
@@ -552,7 +552,7 @@ void qh_errexit(qhT *qh, int exitcode, facetT *facet, ridgeT *ridge) {
   }
   if (!exitcode)
     exitcode= qh_ERRqhull;
-  qh->NOerrexit= True;
+  qh->NOerrexit= true;
   longjmp(qh->errexit, exitcode);
 } /* errexit */
 
@@ -569,7 +569,7 @@ void qh_errprint(qhT *qh, const char *string, facetT *atfacet, facetT *otherface
 } /* errprint */
 
 
-void qh_printfacetlist(qhT *qh, facetT *facetlist, setT *facets, boolT printall) {
+void qh_printfacetlist(qhT *qh, facetT *facetlist, setT *facets, bool printall) {
   facetT *facet, **facetp;
 
   /* remove these calls to help avoid io_r.c */

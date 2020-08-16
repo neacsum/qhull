@@ -116,29 +116,29 @@ extern "C" {
 /***** -libqhull_r.c prototypes (alphabetical after qhull) ********************/
 
 void    qh_qhull(qhT *qh);
-boolT   qh_addpoint(qhT *qh, pointT *furthest, facetT *facet, boolT checkdist);
+bool   qh_addpoint(qhT *qh, pointT *furthest, facetT *facet, bool checkdist);
 void    qh_build_withrestart(qhT *qh);
 vertexT *qh_buildcone(qhT *qh, pointT *furthest, facetT *facet, int goodhorizon, facetT **retryfacet);
-boolT   qh_buildcone_mergepinched(qhT *qh, vertexT *apex, facetT *facet, facetT **retryfacet);
-boolT   qh_buildcone_onlygood(qhT *qh, vertexT *apex, int goodhorizon);
+bool   qh_buildcone_mergepinched(qhT *qh, vertexT *apex, facetT *facet, facetT **retryfacet);
+bool   qh_buildcone_onlygood(qhT *qh, vertexT *apex, int goodhorizon);
 void    qh_buildhull(qhT *qh);
 void    qh_buildtracing(qhT *qh, pointT *furthest, facetT *facet);
 void    qh_errexit2(qhT *qh, int exitcode, facetT *facet, facetT *otherfacet);
 void    qh_findhorizon(qhT *qh, pointT *point, facetT *facet, int *goodvisible,int *goodhorizon);
 pointT *qh_nextfurthest(qhT *qh, facetT **visible);
 void    qh_partitionall(qhT *qh, setT *vertices, pointT *points,int npoints);
-void    qh_partitioncoplanar(qhT *qh, pointT *point, facetT *facet, realT *dist, boolT allnew);
+void    qh_partitioncoplanar(qhT *qh, pointT *point, facetT *facet, realT *dist, bool allnew);
 void    qh_partitionpoint(qhT *qh, pointT *point, facetT *facet);
-void    qh_partitionvisible(qhT *qh, boolT allpoints, int *numpoints);
+void    qh_partitionvisible(qhT *qh, bool allpoints, int *numpoints);
 void    qh_joggle_restart(qhT *qh, const char *reason);
 void    qh_printsummary(qhT *qh, FILE *fp);
 
 /***** -global_r.c internal prototypes (alphabetical) ***********************/
 
 void    qh_appendprint(qhT *qh, qh_PRINT format);
-void    qh_freebuild(qhT *qh, boolT allmem);
+void    qh_freebuild(qhT *qh, bool allmem);
 void    qh_freebuffers(qhT *qh);
-void    qh_initbuffers(qhT *qh, coordT *points, int numpoints, int dim, boolT ismalloc);
+void    qh_initbuffers(qhT *qh, coordT *points, int numpoints, int dim, bool ismalloc);
 
 /***** -stat_r.c internal prototypes (alphabetical) ***********************/
 
@@ -152,7 +152,7 @@ void    qh_allstatF(qhT *qh);
 void    qh_allstatG(qhT *qh);
 void    qh_allstatH(qhT *qh);
 void    qh_freebuffers(qhT *qh);
-void    qh_initbuffers(qhT *qh, coordT *points, int numpoints, int dim, boolT ismalloc);
+void    qh_initbuffers(qhT *qh, coordT *points, int numpoints, int dim, bool ismalloc);
 
 #ifdef __cplusplus
 } /* extern "C" */

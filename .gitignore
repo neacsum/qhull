@@ -17,7 +17,8 @@ r?
 *.rej
 
 # Build products
-bin/*
+o
+exe/
 tmp/*
 build-cmake/*
 build/.vs/*
@@ -38,7 +39,7 @@ build/*/Release/*
 build/*/Debug/*
 build/*/MinSizeRel/*
 build/*/RelWithDebInfo/*
-lib
+lib/
 *.a
 *.dll
 *.idb
@@ -51,6 +52,7 @@ lib
 *.pro.user
 
 # DevStudio files
+.vs/
 *.bsc
 *.ncb
 *.pdb

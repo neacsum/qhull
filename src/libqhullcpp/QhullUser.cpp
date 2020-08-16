@@ -224,7 +224,7 @@ void qh_fprintf(qhT *qh, FILE* fp, int msgcode, const char *fmt, ... ){
     /* Place debugging traps here. Use with trace option 'Tn'
          Set qh.tracefacet_id, qh.traceridge_id, and/or qh.tracevertex_id in global_r.c
     */
-    if(False){ /* in production skip test for debugging traps */
+    if(false){ /* in production skip test for debugging traps */
         facetT *neighbor, **neighborp;
         if(qh->tracefacet && qh->tracefacet->tested){
             if(qh_setsize(qh, qh->tracefacet->neighbors) < qh->hull_dim)

@@ -62,7 +62,7 @@
   int dim;                  /* dimension of points */
   int numpoints;            /* number of points */
   coordT *points;           /* array of coordinates for each point */
-  boolT ismalloc;           /* True if qhull should free points in qh_freeqhull() or reallocation */
+  bool ismalloc;           /* true if qhull should free points in qh_freeqhull() or reallocation */
   char flags[]= "qhull Tv"; /* option flags for qhull, see html/qh-quick.htm */
   FILE *outfile= stdout;    /* output from qh_produce_output
                                use NULL to skip qh_produce_output */
@@ -133,21 +133,21 @@ or use libqhull_r or libqhullstatic, or a different tool chain.\n\n");
     Qhull-template at the beginning of this file.
     An example of using qh_new_qhull is user_eg.c
 */
-int qh_new_qhull(int dim, int numpoints, coordT *points, boolT ismalloc,
+int qh_new_qhull(int dim, int numpoints, coordT *points, bool ismalloc,
                 char *qhull_cmd, FILE *outfile, FILE *errfile) {
   /* gcc may issue a "might be clobbered" warning for dim, points, and ismalloc [-Wclobbered].
      These parameters are not referenced after a longjmp() and hence not clobbered.
      See http://stackoverflow.com/questions/7721854/what-sense-do-these-clobbered-variable-warnings-make */
   int exitcode, hulldim;
-  boolT new_ismalloc;
-  static boolT firstcall= True;
+  bool new_ismalloc;
+  static bool firstcall= true;
   coordT *new_points;
   if(!errfile){
     errfile= stderr;
   }
   if (firstcall) {
     qh_meminit(errfile);
-    firstcall= False;
+    firstcall= false;
   } else {
     qh_memcheck();
   }
@@ -163,17 +163,17 @@ int qh_new_qhull(int dim, int numpoints, coordT *points, boolT ismalloc,
   trace1((qh ferr, 1044, "qh_new_qhull: build new Qhull for %d %d-d points with %s\n", numpoints, dim, qhull_cmd));
   exitcode= setjmp(qh errexit);
   if (!exitcode) {
-    qh NOerrexit= False;
+    qh NOerrexit= false;
     qh_initflags(qhull_cmd);
     if (qh DELAUNAY)
-      qh PROJECTdelaunay= True;
+      qh PROJECTdelaunay= true;
     if (qh HALFspace) {
       /* points is an array of halfspaces,
          the last coordinate of each halfspace is its offset */
       hulldim= dim-1;
       qh_setfeasible(hulldim);
       new_points= qh_sethalfspace_all(dim, numpoints, points, qh feasible_point);
-      new_ismalloc= True;
+      new_ismalloc= true;
       if (ismalloc)
         qh_free(points);
     }else {
@@ -192,7 +192,7 @@ int qh_new_qhull(int dim, int numpoints, coordT *points, boolT ismalloc,
     if (qh VERIFYoutput && !qh FORCEoutput && !qh STOPadd && !qh STOPcone && !qh STOPpoint)
       qh_check_points();
   }
-  qh NOerrexit= True;
+  qh NOerrexit= true;
   return exitcode;
 } /* new_qhull */
 
@@ -227,7 +227,7 @@ void qh_errexit(int exitcode, facetT *facet, ridgeT *ridge) {
     qh_fprintf(qh ferr, 8126, "\nqhull error while handling previous error in qh_errexit.  Exit program\n");
     qh_exit(qh_ERRother);
   }
-  qh ERREXITcalled= True;
+  qh ERREXITcalled= true;
   if (!qh QHULLfinished)
     qh hulltime= qh_CPUclock - qh hulltime;
   qh_errprint("ERRONEOUS", facet, NULL, ridge, NULL);
@@ -286,9 +286,9 @@ void qh_errexit(int exitcode, facetT *facet, ridgeT *ridge) {
          qh last_errcode, exitcode);
     qh_exit(exitcode);
   }
-  qh ERREXITcalled= False;
-  qh NOerrexit= True;
-  qh ALLOWrestart= False;  /* longjmp will undo qh_build_withrestart */
+  qh ERREXITcalled= false;
+  qh NOerrexit= true;
+  qh ALLOWrestart= false;  /* longjmp will undo qh_build_withrestart */
   longjmp(qh errexit, exitcode);
 } /* errexit */
 
@@ -349,7 +349,7 @@ void qh_errprint(const char *string, facetT *atfacet, facetT *otherfacet, ridgeT
   notes:
     also prints all vertices
 */
-void qh_printfacetlist(facetT *facetlist, setT *facets, boolT printall) {
+void qh_printfacetlist(facetT *facetlist, setT *facets, bool printall) {
   facetT *facet, **facetp;
 
   if (facetlist)
