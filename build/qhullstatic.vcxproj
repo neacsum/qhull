@@ -90,7 +90,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling />
       <WarningLevel>Level3</WarningLevel>
@@ -118,7 +118,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>
       </ExceptionHandling>
@@ -147,7 +147,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling />
       <WarningLevel>Level3</WarningLevel>
@@ -173,7 +173,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>
       </ExceptionHandling>
@@ -205,17 +205,17 @@
     <ClCompile Include="..\src\libqhull\userprintf_rbox.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\libqhull\geom.h" />
-    <ClInclude Include="..\src\libqhull\io.h" />
-    <ClInclude Include="..\src\libqhull\libqhull.h" />
-    <ClInclude Include="..\src\libqhull\mem.h" />
-    <ClInclude Include="..\src\libqhull\merge.h" />
-    <ClInclude Include="..\src\libqhull\poly.h" />
-    <ClInclude Include="..\src\libqhull\qhull_a.h" />
-    <ClInclude Include="..\src\libqhull\qset.h" />
-    <ClInclude Include="..\src\libqhull\random.h" />
-    <ClInclude Include="..\src\libqhull\stat.h" />
-    <ClInclude Include="..\src\libqhull\user.h" />
+    <ClInclude Include="..\include\geom.h" />
+    <ClInclude Include="..\include\io.h" />
+    <ClInclude Include="..\include\mem.h" />
+    <ClInclude Include="..\include\merge.h" />
+    <ClInclude Include="..\include\poly.h" />
+    <ClInclude Include="..\include\qhull\libqhull.h" />
+    <ClInclude Include="..\include\qhull\qhull_a.h" />
+    <ClInclude Include="..\include\qhull\user.h" />
+    <ClInclude Include="..\include\qset.h" />
+    <ClInclude Include="..\include\random.h" />
+    <ClInclude Include="..\include\stat.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

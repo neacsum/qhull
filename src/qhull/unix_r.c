@@ -12,7 +12,7 @@
    $DateTime: 2020/07/29 18:28:16 $$Author: bbarber $
 */
 
-#include "libqhull_r/libqhull_r.h"
+#include <qhull/libqhull_r.h>
 
 #include <ctype.h>
 #include <math.h>
@@ -20,12 +20,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#ifdef __cplusplus
-extern "C" {
-  int isatty(int);
-}
-
-#elif defined(_MSC_VER)
+#if defined(_MSC_VER)
 #include <io.h>
 #define isatty _isatty
 /* int _isatty(int); */

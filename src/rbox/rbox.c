@@ -9,8 +9,8 @@
 
 */
 
-#include "libqhull/libqhull.h"
-#include "libqhull/random.h"
+#include <qhull/libqhull.h>
+#include <random.h>
 
 #include <stdarg.h>
 #include <stdio.h>

@@ -67,37 +67,34 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\libqhull\geom.h">
+    <ClInclude Include="..\include\qhull\libqhull.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhull\io.h">
+    <ClInclude Include="..\include\qhull\qhull_a.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhull\libqhull.h">
+    <ClInclude Include="..\include\qhull\user.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhull\mem.h">
+    <ClInclude Include="..\include\qset.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhull\merge.h">
+    <ClInclude Include="..\include\poly.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhull\poly.h">
+    <ClInclude Include="..\include\random.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhull\qhull_a.h">
+    <ClInclude Include="..\include\stat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhull\qset.h">
+    <ClInclude Include="..\include\mem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhull\random.h">
+    <ClInclude Include="..\include\merge.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhull\stat.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\libqhull\user.h">
+    <ClInclude Include="..\include\qio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -71,9 +71,9 @@ Functions and macros from qset.h.  Counts occurrences in this test.  Does not co
     $DateTime: 2020/05/21 22:05:32 $$Author: bbarber $
 */
 
-#include "libqhull/user.h"  /* QHULL_CRTDBG */
-#include "libqhull/qset.h"
-#include "libqhull/mem.h"
+#include <qhull/user.h>  /* QHULL_CRTDBG */
+#include <qset.h>
+#include <mem.h>
 
 #include <stdarg.h>
 #include <stdio.h>

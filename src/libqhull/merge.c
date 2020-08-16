@@ -25,7 +25,7 @@
    $DateTime: 2020/05/26 16:17:49 $$Author: bbarber $
 */
 
-#include "qhull_a.h"
+#include <qhull/qhull_a.h>
 
 #ifndef qh_NOmerge
 

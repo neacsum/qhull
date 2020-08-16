@@ -18,7 +18,7 @@
    Please report any errors that you fix to qhull@qhull.org
 */
 
-#include "libqhull_r.h"
+#include <qhull/libqhull_r.h>
 
 #include <stdarg.h>
 #include <stdlib.h>

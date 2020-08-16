@@ -6,10 +6,10 @@
 **
 ****************************************************************************/
 
-#include "libqhullcpp/QhullHyperplane.h"
+#include "QhullHyperplane.h"
 
-#include "libqhullcpp/Qhull.h"
-#include "libqhullcpp/QhullPoint.h"
+#include "Qhull.h"
+#include "QhullPoint.h"
 
 #include <iostream>
 

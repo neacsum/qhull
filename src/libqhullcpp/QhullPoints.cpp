@@ -6,9 +6,9 @@
 **
 ****************************************************************************/
 
-#include "libqhullcpp/QhullPoints.h"
+#include "QhullPoints.h"
 
-#include "libqhullcpp/Qhull.h"
+#include "Qhull.h"
 
 #include <iostream>
 

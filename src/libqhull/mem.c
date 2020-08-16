@@ -34,7 +34,7 @@
   $DateTime: 2020/05/21 22:05:32 $$Author: bbarber $
 */
 
-#include "user.h"  /* for QHULL_CRTDBG */
+#include <qhull/user.h>  /* for QHULL_CRTDBG */
 #include "mem.h"
 #include <string.h>
 #include <stdio.h>

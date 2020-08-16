@@ -6,10 +6,10 @@
 **
 ****************************************************************************/
 
-#include "libqhullcpp/QhullPoint.h"
+#include "QhullPoint.h"
 
-#include "libqhullcpp/QhullError.h"
-#include "libqhullcpp/Qhull.h"
+#include "QhullError.h"
+#include "Qhull.h"
 
 #include <iostream>
 #include <algorithm>

@@ -8,7 +8,7 @@
      Used by rbox.  Do not use 'qh' 
 */
 
-#include "libqhull_r.h"
+#include <qhull/libqhull_r.h>
 #include "random_r.h"
 
 #include <string.h>

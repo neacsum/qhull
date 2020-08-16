@@ -9,7 +9,7 @@
 #//! RoadError -- All exceptions thrown by Qhull are RoadErrors
 #//! Do not throw RoadError's from destructors.  Use e.logError() instead.
 
-#include "libqhullcpp/RoadError.h"
+#include "RoadError.h"
 
 #include <string>
 #include <sstream>

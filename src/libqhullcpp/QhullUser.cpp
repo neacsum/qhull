@@ -6,9 +6,9 @@
 **
 ****************************************************************************/
 
-#include "libqhullcpp/QhullUser.h"
+#include "QhullUser.h"
 
-#include "libqhullcpp/QhullError.h"
+#include "QhullError.h"
 
 #include <iostream>
 #include <stdint.h>

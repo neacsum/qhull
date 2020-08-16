@@ -8,7 +8,7 @@
 
 #//! RoadLogEvent -- All exceptions thrown by Qhull are RoadErrors
 
-#include "libqhullcpp/RoadLogEvent.h"
+#include "RoadLogEvent.h"
 
 #include <string>
 #include <sstream>

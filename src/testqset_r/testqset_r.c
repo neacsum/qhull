@@ -71,10 +71,10 @@ Functions and macros from qset_r.h.  Counts occurrences in this test.  Does not 
     $DateTime: 2020/05/21 22:05:32 $$Author: bbarber $
 */
 
-#include "libqhull_r/user_r.h"  /* QHULL_CRTDBG */
-#include "libqhull_r/qset_r.h"
-#include "libqhull_r/mem_r.h"
-#include "libqhull_r/libqhull_r.h"
+#include <qhull/user_r.h>  /* QHULL_CRTDBG */
+#include <qset_r.h>
+#include <mem_r.h>
+#include <qhull/libqhull_r.h>
 
 #include <stdarg.h>
 #include <stdio.h>

@@ -10,10 +10,10 @@
 #//! QhullQh -- Qhull's global data structure, qhT, as a C++ class
 
 
-#include "libqhullcpp/QhullQh.h"
+#include "QhullQh.h"
 
-#include "libqhullcpp/QhullError.h"
-#include "libqhullcpp/QhullStat.h"
+#include "QhullError.h"
+#include "QhullStat.h"
 
 #include <sstream>
 #include <iostream>

@@ -13,7 +13,7 @@
    $DateTime: 2020/06/03 19:31:01 $$Author: bbarber $
 */
 
-#include "qhull_a.h"
+#include <qhull/qhull_a.h>
 
 /*======== functions in alphabetical order ==========*/
 

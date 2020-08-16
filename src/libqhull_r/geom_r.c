@@ -13,7 +13,7 @@
    infrequent code goes into geom2_r.c
 */
 
-#include "qhull_ra.h"
+#include <qhull/qhull_ra.h>
 
 /*-<a                             href="qh-geom_r.htm#TOC"
   >-------------------------------</a><a name="distplane">-</a>

@@ -6,13 +6,14 @@
 **
 ****************************************************************************/
 
-#include "libqhullcpp/PointCoordinates.h"
-
-#include "libqhullcpp/QhullError.h"
-#include "libqhullcpp/QhullPoint.h"
+#include "PointCoordinates.h"
 
 #include <iterator>
 #include <iostream>
+
+#include "QhullError.h"
+#include "QhullPoint.h"
+
 
 using std::istream;
 using std::string;

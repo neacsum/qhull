@@ -20,8 +20,8 @@
   Please report any errors that you fix to qhull@qhull.org
 */
 
-#include "libqhull.h"
-#include "poly.h" /* for qh.tracefacet */
+#include <qhull/libqhull.h>
+#include <poly.h> /* for qh.tracefacet */
 
 #include <stdarg.h>
 #include <stdio.h>

@@ -51,7 +51,7 @@
    Defining #if 1, also prevents user.o from being loaded.
 */
 
-#include "libqhull_r/qhull_ra.h"
+#include <qhull/qhull_ra.h>
 
 /*-------------------------------------------------
 -internal function prototypes

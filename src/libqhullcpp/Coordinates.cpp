@@ -6,10 +6,10 @@
 **
 ****************************************************************************/
 
-#include "libqhullcpp/Coordinates.h"
+#include "Coordinates.h"
 
-#include "libqhullcpp/functionObjects.h"
-#include "libqhullcpp/QhullError.h"
+#include "functionObjects.h"
+#include "QhullError.h"
 
 #include <iostream>
 #include <iterator>

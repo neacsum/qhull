@@ -8,12 +8,12 @@
 
 #//! QhullVertex -- Qhull's vertex structure, vertexT, as a C++ class
 
-#include "libqhullcpp/QhullVertex.h"
+#include "QhullVertex.h"
 
-#include "libqhullcpp/Qhull.h"
-#include "libqhullcpp/QhullPoint.h"
-#include "libqhullcpp/QhullFacetSet.h"
-#include "libqhullcpp/QhullFacet.h"
+#include "Qhull.h"
+#include "QhullPoint.h"
+#include "QhullFacetSet.h"
+#include "QhullFacet.h"
 
 #ifdef _MSC_VER  // Microsoft Visual C++ -- warning level 4
 #pragma warning( disable : 4611)  // interaction between '_setjmp' and C++ object destruction is non-portable

@@ -45,7 +45,7 @@
    see libqhull_r.h for data structures, macros, and user-callable functions.
 */
 
-#include "libqhull_r/qhull_ra.h"
+#include <qhull/qhull_ra.h>
 
 /*-------------------------------------------------
 -internal function prototypes

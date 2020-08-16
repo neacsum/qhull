@@ -9,13 +9,13 @@
 #//! Qhull -- invoke qhull from C++
 #//! Compile libqhull_r and Qhull together due to use of setjmp/longjmp()
 
-#include "libqhullcpp/Qhull.h"
+#include "Qhull.h"
 
-#include "libqhullcpp/QhullError.h"
-#include "libqhullcpp/RboxPoints.h"
-#include "libqhullcpp/QhullQh.h"
-#include "libqhullcpp/QhullFacet.h"
-#include "libqhullcpp/QhullFacetList.h"
+#include "QhullError.h"
+#include "RboxPoints.h"
+#include "QhullQh.h"
+#include "QhullFacet.h"
+#include "QhullFacetList.h"
 
 #include <iostream>
 

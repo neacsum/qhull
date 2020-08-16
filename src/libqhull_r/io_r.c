@@ -18,7 +18,7 @@
    $DateTime: 2020/06/04 15:37:41 $$Author: bbarber $
 */
 
-#include "qhull_ra.h"
+#include <qhull/qhull_ra.h>
 
 /*========= -functions in alphabetical order after qh_produce_output(qh)  =====*/
 

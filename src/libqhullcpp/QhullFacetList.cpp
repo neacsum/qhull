@@ -8,12 +8,12 @@
 
 #//! QhullFacetList -- Qhull's linked facets, as a C++ class
 
-#include "libqhullcpp/QhullFacetList.h"
+#include "QhullFacetList.h"
 
-#include "libqhullcpp/QhullFacet.h"
-#include "libqhullcpp/QhullPoint.h"
-#include "libqhullcpp/QhullRidge.h"
-#include "libqhullcpp/QhullVertex.h"
+#include "QhullFacet.h"
+#include "QhullPoint.h"
+#include "QhullRidge.h"
+#include "QhullVertex.h"
 
 using std::string;
 using std::vector;

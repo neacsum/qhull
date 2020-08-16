@@ -98,7 +98,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -126,7 +126,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -154,7 +154,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
@@ -180,7 +180,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
@@ -214,32 +214,31 @@
     <ClCompile Include="..\src\libqhullcpp\RoadLogEvent.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\libqhullcpp\Coordinates.h" />
-    <ClInclude Include="..\src\libqhullcpp\functionObjects.h" />
-    <ClInclude Include="..\src\libqhullcpp\PointCoordinates.h" />
-    <ClInclude Include="..\src\libqhullcpp\Qhull.h" />
-    <ClInclude Include="..\src\libqhullcpp\QhullError.h" />
-    <ClInclude Include="..\src\libqhullcpp\QhullFacet.h" />
-    <ClInclude Include="..\src\libqhullcpp\QhullFacetList.h" />
-    <ClInclude Include="..\src\libqhullcpp\QhullFacetSet.h" />
-    <ClInclude Include="..\src\libqhullcpp\QhullHyperplane.h" />
-    <ClInclude Include="..\src\libqhullcpp\QhullIterator.h" />
-    <ClInclude Include="..\src\libqhullcpp\QhullLinkedList.h" />
-    <ClInclude Include="..\src\libqhullcpp\QhullPoint.h" />
-    <ClInclude Include="..\src\libqhullcpp\QhullPoints.h" />
-    <ClInclude Include="..\src\libqhullcpp\QhullPointSet.h" />
-    <ClInclude Include="..\src\libqhullcpp\QhullQh.h" />
-    <ClInclude Include="..\src\libqhullcpp\QhullRidge.h" />
-    <ClInclude Include="..\src\libqhullcpp\QhullSet.h" />
-    <ClInclude Include="..\src\libqhullcpp\QhullSets.h" />
-    <ClInclude Include="..\src\libqhullcpp\QhullStat.h" />
-    <ClInclude Include="..\src\libqhullcpp\QhullUser.h" />
-    <ClInclude Include="..\src\libqhullcpp\QhullVertex.h" />
-    <ClInclude Include="..\src\libqhullcpp\QhullVertexSet.h" />
-    <ClInclude Include="..\src\libqhullcpp\RboxPoints.h" />
-    <ClInclude Include="..\src\libqhullcpp\RoadError.h" />
-    <ClInclude Include="..\src\libqhullcpp\RoadLogEvent.h" />
-    <ClInclude Include="..\src\qhulltest\RoadTest.h" />
+    <ClInclude Include="..\include\Coordinates.h" />
+    <ClInclude Include="..\include\functionObjects.h" />
+    <ClInclude Include="..\include\PointCoordinates.h" />
+    <ClInclude Include="..\include\Qhull.h" />
+    <ClInclude Include="..\include\QhullError.h" />
+    <ClInclude Include="..\include\QhullFacet.h" />
+    <ClInclude Include="..\include\QhullFacetList.h" />
+    <ClInclude Include="..\include\QhullFacetSet.h" />
+    <ClInclude Include="..\include\QhullHyperplane.h" />
+    <ClInclude Include="..\include\QhullIterator.h" />
+    <ClInclude Include="..\include\QhullLinkedList.h" />
+    <ClInclude Include="..\include\QhullPoint.h" />
+    <ClInclude Include="..\include\QhullPoints.h" />
+    <ClInclude Include="..\include\QhullPointSet.h" />
+    <ClInclude Include="..\include\QhullQh.h" />
+    <ClInclude Include="..\include\QhullRidge.h" />
+    <ClInclude Include="..\include\QhullSet.h" />
+    <ClInclude Include="..\include\QhullSets.h" />
+    <ClInclude Include="..\include\QhullStat.h" />
+    <ClInclude Include="..\include\QhullUser.h" />
+    <ClInclude Include="..\include\QhullVertex.h" />
+    <ClInclude Include="..\include\QhullVertexSet.h" />
+    <ClInclude Include="..\include\RboxPoints.h" />
+    <ClInclude Include="..\include\RoadError.h" />
+    <ClInclude Include="..\include\RoadLogEvent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

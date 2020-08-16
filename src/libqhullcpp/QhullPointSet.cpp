@@ -6,7 +6,7 @@
 **
 ****************************************************************************/
 
-#include "libqhullcpp/QhullPointSet.h"
+#include "QhullPointSet.h"
 
 #include <iostream>
 #include <algorithm>

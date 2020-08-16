@@ -16,7 +16,7 @@
    $DateTime: 2020/07/29 18:28:16 $$Author: bbarber $
  */
 
-#include "qhull_a.h"
+#include <qhull/qhull_a.h>
 
 /*========= qh definition -- globals defined in libqhull.h =======================*/
 

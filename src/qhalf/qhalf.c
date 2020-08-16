@@ -9,7 +9,7 @@
    Copyright (c) 1993-2020, The Geometry Center
 */
 
-#include "libqhull/libqhull.h"
+#include <qhull/libqhull.h>
 
 #include <stdio.h>
 #include <stdlib.h>

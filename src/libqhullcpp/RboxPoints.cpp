@@ -6,9 +6,9 @@
 **
 ****************************************************************************/
 
-#include "libqhullcpp/RboxPoints.h"
+#include "RboxPoints.h"
 
-#include "libqhullcpp/QhullError.h"
+#include "QhullError.h"
 
 #include <iostream>
 #include <cstring>

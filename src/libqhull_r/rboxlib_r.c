@@ -12,8 +12,8 @@
      incorrect range if qh_RANDOMmax is defined wrong (user_r.h)
 */
 
-#include "libqhull_r.h"  /* First for user_r.h */
-#include "random_r.h"
+#include <qhull/libqhull_r.h>  /* First for user_r.h */
+#include <random_r.h>
 
 #include <ctype.h>
 #include <limits.h>

@@ -8,11 +8,11 @@
 
 #//! QhullRidge -- Qhull's ridge structure, ridgeT, as a C++ class
 
-#include "libqhullcpp/QhullRidge.h"
+#include "QhullRidge.h"
 
-#include "libqhullcpp/QhullSets.h"
-#include "libqhullcpp/QhullVertex.h"
-#include "libqhullcpp/Qhull.h"
+#include "QhullSets.h"
+#include "QhullVertex.h"
+#include "Qhull.h"
 
 #ifdef _MSC_VER  // Microsoft Visual C++ -- warning level 4
 #pragma warning( disable : 4611)  // interaction between '_setjmp' and C++ object destruction is non-portable

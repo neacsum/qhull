@@ -34,7 +34,7 @@
   $DateTime: 2020/05/21 22:05:32 $$Author: bbarber $
 */
 
-#include "libqhull_r.h"  /* includes user_r.h and mem_r.h */
+#include <qhull/libqhull_r.h>  /* includes user_r.h and mem_r.h */
 
 #include <string.h>
 #include <stdio.h>

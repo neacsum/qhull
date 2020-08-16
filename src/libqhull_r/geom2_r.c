@@ -14,7 +14,7 @@
    frequently used code goes into geom_r.c
 */
 
-#include "qhull_ra.h"
+#include <qhull/qhull_ra.h>
 
 /*================== functions in alphabetic order ============*/
 

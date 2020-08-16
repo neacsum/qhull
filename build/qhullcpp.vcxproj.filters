@@ -71,82 +71,79 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\libqhullcpp\Coordinates.h">
+    <ClInclude Include="..\include\Coordinates.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\functionObjects.h">
+    <ClInclude Include="..\include\functionObjects.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\PointCoordinates.h">
+    <ClInclude Include="..\include\PointCoordinates.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\Qhull.h">
+    <ClInclude Include="..\include\Qhull.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\QhullError.h">
+    <ClInclude Include="..\include\QhullError.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\QhullFacet.h">
+    <ClInclude Include="..\include\QhullFacet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\QhullFacetList.h">
+    <ClInclude Include="..\include\QhullFacetList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\QhullFacetSet.h">
+    <ClInclude Include="..\include\QhullFacetSet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\QhullHyperplane.h">
+    <ClInclude Include="..\include\QhullHyperplane.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\QhullIterator.h">
+    <ClInclude Include="..\include\QhullIterator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\QhullLinkedList.h">
+    <ClInclude Include="..\include\QhullLinkedList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\QhullPoint.h">
+    <ClInclude Include="..\include\QhullPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\QhullPoints.h">
+    <ClInclude Include="..\include\QhullPoints.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\QhullPointSet.h">
+    <ClInclude Include="..\include\QhullPointSet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\QhullQh.h">
+    <ClInclude Include="..\include\QhullQh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\QhullRidge.h">
+    <ClInclude Include="..\include\QhullRidge.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\QhullSet.h">
+    <ClInclude Include="..\include\QhullSet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\QhullSets.h">
+    <ClInclude Include="..\include\QhullSets.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\QhullStat.h">
+    <ClInclude Include="..\include\QhullStat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\QhullUser.h">
+    <ClInclude Include="..\include\QhullUser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\QhullVertex.h">
+    <ClInclude Include="..\include\QhullVertex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\QhullVertexSet.h">
+    <ClInclude Include="..\include\QhullVertexSet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\RboxPoints.h">
+    <ClInclude Include="..\include\RboxPoints.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\RoadError.h">
+    <ClInclude Include="..\include\RoadError.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\libqhullcpp\RoadLogEvent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\qhulltest\RoadTest.h">
+    <ClInclude Include="..\include\RoadLogEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

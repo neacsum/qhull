@@ -40,7 +40,7 @@
    information it supplies.
 */
 
-#include "qhull_ra.h"
+#include <qhull/qhull_ra.h>
 
 #include <stdarg.h>
 

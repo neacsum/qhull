@@ -18,9 +18,9 @@
    $DateTime: 2020/05/21 22:05:32 $$Author: bbarber $
 */
 
-#include "libqhull_r.h" /* for qhT and QHULL_CRTDBG */
-#include "qset_r.h"
-#include "mem_r.h"
+#include <qhull/libqhull_r.h> /* for qhT and QHULL_CRTDBG */
+#include <qset_r.h>
+#include <mem_r.h>
 #include <stdio.h>
 #include <string.h>
 /*** uncomment here and qhull_ra.h

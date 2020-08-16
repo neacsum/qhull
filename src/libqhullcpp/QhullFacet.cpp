@@ -8,16 +8,16 @@
 
 #//! QhullFacet -- Qhull's facet structure, facetT, as a C++ class
 
-#include "libqhullcpp/QhullFacet.h"
+#include "QhullFacet.h"
 
-#include "libqhullcpp/QhullError.h"
-#include "libqhullcpp/Qhull.h"
-#include "libqhullcpp/QhullSet.h"
-#include "libqhullcpp/QhullPoint.h"
-#include "libqhullcpp/QhullPointSet.h"
-#include "libqhullcpp/QhullRidge.h"
-#include "libqhullcpp/QhullFacetSet.h"
-#include "libqhullcpp/QhullVertex.h"
+#include "QhullError.h"
+#include "Qhull.h"
+#include "QhullSet.h"
+#include "QhullPoint.h"
+#include "QhullPointSet.h"
+#include "QhullRidge.h"
+#include "QhullFacetSet.h"
+#include "QhullVertex.h"
 
 #include <ostream>
 

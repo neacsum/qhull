@@ -8,9 +8,9 @@
 
 #//! QhullStat -- Qhull's global data structure, statT, as a C++ class
 
-#include "libqhullcpp/QhullStat.h"
+#include "QhullStat.h"
 
-#include "libqhullcpp/QhullError.h"
+#include "QhullError.h"
 
 #include <sstream>
 #include <iostream>

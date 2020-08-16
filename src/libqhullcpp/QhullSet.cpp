@@ -8,10 +8,10 @@
 
 #//! QhullSet -- Qhull's set structure, setT, as a C++ class
 
-#include "libqhullcpp/QhullSet.h"
+#include "QhullSet.h"
 
-#include "libqhullcpp/Qhull.h"
-#include "libqhullcpp/QhullError.h"
+#include "Qhull.h"
+#include "QhullError.h"
 
 #ifdef _MSC_VER  // Microsoft Visual C++ -- warning level 4
 #endif

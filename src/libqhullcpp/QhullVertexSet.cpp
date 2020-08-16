@@ -8,13 +8,13 @@
 
 #//! QhullVertexSet -- Qhull's linked Vertexs, as a C++ class
 
-#include "libqhullcpp/QhullVertexSet.h"
+#include "QhullVertexSet.h"
 
-#include "libqhullcpp/QhullVertex.h"
-#include "libqhullcpp/QhullPoint.h"
-#include "libqhullcpp/QhullRidge.h"
-#include "libqhullcpp/QhullVertex.h"
-#include "libqhullcpp/Qhull.h"
+#include "QhullVertex.h"
+#include "QhullPoint.h"
+#include "QhullRidge.h"
+#include "QhullVertex.h"
+#include "Qhull.h"
 
 using std::string;
 using std::vector;

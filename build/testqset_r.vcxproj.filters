@@ -9,16 +9,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\libqhull_r\mem_r.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\libqhull_r\qset_r.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\testqset_r\testqset_r.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\libqhull_r\usermem_r.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
